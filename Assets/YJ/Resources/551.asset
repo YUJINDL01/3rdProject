@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0d34f93ceeb57f4cb4cdb3495e72a09, type: 3}
+  m_Name: 551
+  m_EditorClassIdentifier: 
+  type: 1
+  number: 551
+  problem: "\uB3C4\uB85C\uAD50\uD1B5\uBC95\uB839\uC0C1\u2018\uC790\uB3D9\uCC28\u2019\uC5D0
+    \uD574\uB2F9\uD558\uB294 2\uAC00\uC9C0\uB294? "
+  options:
+  - "\uB364\uD504\uD2B8\uB7ED"
+  - "\uB178\uC0C1\uC548\uC815\uAE30"
+  - "\uC790\uC804\uAC70 "
+  - "\uC720\uBAA8\uCC28(\uD3ED 1\uBBF8\uD130 \uC774\uB0B4)"
+  answer: 0100000002000000
+  solution: "\uB3C4\uB85C\uAD50\uD1B5\uBC95 \uC81C 2\uC870 \uBC0F \uAC74\uC124\uAE30\uACC4\uAD00\uB9AC\uBC95
+    \uC81C 26\uC870 \uC81C1\uD56D \uB2E8\uC11C\uC5D0 \uB530\uB77C \uAC74\uC124\uAE30\uACC4
+    \uC911 \uB364\uD504\uD2B8\uB7ED, \uC544\uC2A4\uD314\uD2B8\uC0B4\uD3EC\uAE30,
+    \uB178\uC0C1\uC548 \uC815\uAE30, \uCF58\uD06C\uB9AC\uD2B8\uBBF9\uC11C\uD2B8\uB7ED,
+    \uCF58\uD06C\uB9AC\uD2B8\uD38C\uD504, \uCC9C\uACF5\uAE30\uB294 \uC790\uB3D9\uCC28\uC5D0
+    \uD3EC\uD568\uB41C\uB2E4."
+  score: 3
+  image: {fileID: 0}
+  explanation: []
+  video: {fileID: 0}

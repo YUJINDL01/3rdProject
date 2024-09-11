@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0d34f93ceeb57f4cb4cdb3495e72a09, type: 3}
+  m_Name: 684
+  m_EditorClassIdentifier: 
+  type: 3
+  number: 684
+  problem: "\uAD50\uCC28\uB85C\uB97C \uD1B5\uACFC \uD558\uB358 \uC911 \uCC28\uB7C9
+    \uC2E0\uD638\uAC00 \uB179\uC0C9\uC5D0\uC11C \uD669\uC0C9\uC73C\uB85C \uBCC0\uACBD\uB41C
+    \uACBD\uC6B0 \uAC00 \uC7A5 \uC548\uC804\uD55C \uC6B4\uC804 \uBC29\uBC95 2\uAC00\uC9C0\uB294?"
+  options:
+  - "\uAD50\uCC28\uB85C \uBC16\uC73C\uB85C \uC2E0\uC18D\uD558\uAC8C \uBE60\uC838\uB098\uAC00\uC57C
+    \uD55C\uB2E4."
+  - "\uC989\uC2DC \uC815\uC9C0\uD558\uC5EC\uC57C \uD55C\uB2E4."
+  - "\uC11C\uD589\uD558\uBA74\uC11C \uC9C4\uD589\uD558\uC5EC\uC57C \uD55C\uB2E4."
+  - "\uC77C\uC2DC\uC815\uC9C0 \uD6C4 \uC9C4\uD589\uD558\uC5EC\uC57C \uD55C\uB2E4."
+  - "\uC8FC\uC704\uB97C \uC0B4\uD53C\uBA70 \uC2E0\uC18D\uD788 \uC9C4\uD589\uD558\uC5EC\uC57C
+    \uD55C\uB2E4."
+  answer: 0100000005000000
+  solution: "\uB3C4\uB85C\uAD50\uD1B5\uBC95 \uC2DC\uD589\uADDC\uCE59 [\uBCC4\uD45C2] 
+    \uC774\uBBF8 \uAD50\uCC28\uB85C\uC5D0 \uCC28\uB9C8\uC758 \uC77C\uBD80\uB77C\uB3C4
+    \uC9C4\uC785\uD558\uACE0 \uC788\uB294 \uACBD\uC6B0\uC5D0\uB294 \uC2E0\uC18D\uD788
+    \uAD50\uCC28\uB85C \uBC16\uC73C\uB85C \uC9C4\uD589\uD558\uC5EC\uC57C \uD55C\uB2E4. "
+  score: 3
+  image: {fileID: 21300000, guid: 66581ebc5c5853b4797115e7d86d2093, type: 3}
+  explanation: []
+  video: {fileID: 0}
