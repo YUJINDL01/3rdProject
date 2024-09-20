@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/MJ/Scene/Start.unity
     guid: acfd74d4549c07b448fa6973d763c9bb
   - enabled: 1
-    path: Assets/YJ/Scenes/Written_RoomCreate.unity
-    guid: b7ac2a26ee1bb9b40b9b81fd42543bf7
+    path: Assets/YJ/Scenes/Written_Waiting.unity
+    guid: 14b48f5b9e001b2428025377f2cab71a
   - enabled: 1
     path: Assets/YJ/Scenes/Written_TEST.unity
     guid: d6b76b0680e45d94186300f6663e86d0
