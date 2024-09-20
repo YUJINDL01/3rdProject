@@ -7,7 +7,9 @@ public class LoginManager : MonoBehaviour
 {
     public TMP_InputField id;
     public TMP_InputField password;
+    public TMP_InputField Nickname;
     public TMP_Text notify;
+    
 
     private void Start()
     {
@@ -24,10 +26,13 @@ public class LoginManager : MonoBehaviour
         {
             PlayerPrefs.SetString(id.text, password.text);
             notify.text = "아이디 생성이 완료되었습니다.";
+            Debug.Log("안녕하세요");
+            
         }
         else
         {
             notify.text = "이미 존재하는 아이디입니다.";
+            Debug.Log("hellow");
         }
     }
 
@@ -37,10 +42,16 @@ public class LoginManager : MonoBehaviour
             return;
 
         string pass = PlayerPrefs.GetString(id.text);
+        
 
         if (password.text == pass)
         {
+            string Nick = Nickname.text; // 닉네임 저장
             SceneManager.LoadScene("Start");
+            Debug.Log("your nickname is " + Nick);
+            
+            PlayerPrefs.SetString("eachNickname", Nick);
+            Debug.Log(PlayerPrefs.GetString("eachNickname"));
         }
         else
         {
