@@ -9,7 +9,7 @@ public class MJSceneManager : MonoBehaviour
 
     public void Written()
     {
-        SceneManager.LoadScene("Written_RoomCreate");
+        SceneManager.LoadScene("Written_TEST");
     }
 
     public void Control()

@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
@@ -17,14 +16,6 @@ public class TestEnd : MonoBehaviour
 
     public GameObject problemManagerO;
     private ProblemManager problemManager;
-
-    public static TestEnd Instance;
-
-    private void Start()
-    {
-        Instance = this;
-    }
-
     public void OnEnd()
     {
         //scoremanager.SetActive(true); //모르겠땅 이때 활성화시키면 안되나? 그리고 이렇게 활성화 시킬 수 없나? 매소드를 어떨
