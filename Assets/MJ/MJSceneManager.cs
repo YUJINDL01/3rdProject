@@ -14,7 +14,7 @@ public class MJSceneManager : MonoBehaviour
 
     public void Control()
     {
-        SceneManager.LoadScene("CarNew");
+        SceneManager.LoadScene("YW/Scenes/YWtestMap");
     }
 
     public void Exit()
