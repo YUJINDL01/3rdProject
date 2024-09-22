@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
    public void Start()
    {
-      //StartCoroutine(Process());
+      StartCoroutine(Process());
    }
 
    public void Ready()
@@ -69,7 +69,14 @@ public class GameManager : MonoBehaviour
       Debug.Log("초기화 완료");
       
       //SharedGameData 스폰 
-      var dataOp = RunnerController.Runner.SpawnAsync(sharedGameDataPrefabs);
+      var dataOp = RunnerController.Runner.SpawnAsync(sharedGameDataPrefabs); // RunnerController가 없음 
+      Debug.Log($"dataOp: {dataOp}");
+
+      if (sharedGameDataPrefabs == null)
+      {
+         Debug.Log("프리펩 이상함");
+      }
+
       yield return new WaitUntil(() => dataOp.Status == NetworkSpawnStatus.Spawned);
       // 닉네임 추가
       //dataOp.Object.name = $"{nameof(SharedGameData)}: {dataOp.Object.Id}";
@@ -88,7 +95,7 @@ public class GameManager : MonoBehaviour
             break;
       }
 
-      readyText.text = $"Start!";
+      readyText.text = $"Ready?\n({SharedGameData.ReadyCount}/{RunnerController.Runner.SessionInfo.PlayerCount})";
       yield return wfs; 
       
       // 플레이어 스폰 
@@ -103,9 +110,26 @@ public class GameManager : MonoBehaviour
       // 카운트다운 UI 활성화 
       readyButton.gameObject.SetActive(false);
       readyCanvas.gameObject.SetActive(false);
-      RunnerController.Runner.SpawnAsync(gameCanvas);
       countdownText.gameObject.SetActive(true);
       
+      // 카운트다운 진행 
+      startTimer = TickTimer.CreateFromSeconds(RunnerController.Runner, countdown + 1.1f);
+
+      for (var i = countdown; i > 0; i--)
+      {
+         countdownText.text = $"{i}";
+         yield return new WaitForSeconds(1f);
+         countdownText.text = string.Empty;
+         yield return new WaitForSeconds(0.1f);
+      }
+
+      //네트워크 상의 시간이 완료될 때까지 대기 
+      yield return new WaitUntil(() => startTimer.Expired(RunnerController.Runner));
+      
+      //게임 시작 
+      // 플레이어 동작 
+      RunnerController.Runner.SpawnAsync(gameCanvas);
+
    }
    
 }
