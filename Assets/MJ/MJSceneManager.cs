@@ -9,12 +9,12 @@ public class MJSceneManager : MonoBehaviour
 
     public void Written()
     {
-        SceneManager.LoadScene("Written_TEST");
+        SceneManager.LoadScene("Written_RoomCreate");
     }
 
     public void Control()
     {
-        SceneManager.LoadScene("CarNew");
+        SceneManager.LoadScene("YW/Scenes/YWtestMap");
     }
 
     public void Exit()
