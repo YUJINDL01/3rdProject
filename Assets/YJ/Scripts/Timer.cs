@@ -11,8 +11,8 @@ public class Timer : MonoBehaviour
         
     private void Start()
     {
-        int problemQuantity = 10; // 초기값 
-        StartCoroutine(TimeTimer(problemQuantity));
+        int problemQuantityMin = 10; // 초기값 
+        StartCoroutine(TimeTimer(problemQuantityMin));
     }
 
      IEnumerator TimeTimer(int problemQuantity)
