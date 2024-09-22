@@ -8,19 +8,27 @@ using UnityEngine.SceneManagement;
 public class RoomJoined : MonoBehaviour
 {
     private const string MainSceneName = "Written_TEST";
-    private NetworkRunner runner;
 
-    private void Start()
-    {
-        // NetworkRunner 인스턴스 초기화
-        runner = gameObject.AddComponent<NetworkRunner>();
-        runner.ProvideInput = false; // 필요한 경우에 따라 조정
-    }
+    public GameObject runnerPrefab;
 
+    private static NetworkRunner Runner;
+    
     // 버튼 클릭 시 호출될 메서드
     public async void JoinRandomSession() // async 비동기 작업을 수행할 수 있도록 설정 
     {
-        var result = await runner.StartGame(new StartGameArgs() // 
+        if (Runner == null) //러너가 아직 생성되지 않았다면
+        {
+            //runnerPrefab을 인스턴스화하여 새 네트워크 러너를 생성 
+            var runnerGo = Instantiate(runnerPrefab);
+            Runner = runnerGo.GetComponentInChildren<NetworkRunner>();
+            
+            var controller = Runner.GetComponent<RunnerController>();
+            controller.Init();
+        }
+        // NetworkRunner 인스턴스 초기화
+        //Runner.ProvideInput = false; // 필요한 경우에 따라 조정
+        
+        var result = await RunnerController.Runner.StartGame(new StartGameArgs() // 
         {
             SessionName = "1234", //일단 방법호 1234에서 하게하기 
             GameMode = GameMode.Shared, // 무작위로 세션에 참여
@@ -34,7 +42,7 @@ public class RoomJoined : MonoBehaviour
             
             // 현재 어느 세션에 참가하는 지 잘 모르겠다. 
 
-            string sessionName = runner.SessionInfo.Name;
+            string sessionName = RunnerController.Runner.SessionInfo.Name;
             Debug.Log($"@@@: {sessionName}");
         }
         else

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Fusion;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
    public NetworkPrefabRef sharedGameDataPrefabs;
    public NetworkPrefabRef playerPrefab;
    public NetworkPrefabRef gameCanvas;
+
 
    public Button readyButton;
    public GameObject readyCanvas;
@@ -32,6 +34,11 @@ public class GameManager : MonoBehaviour
 
    public void Start()
    {
+      if (sharedGameDataPrefabs == null)
+      {
+         Debug.Log("sharedGameDataPrefabs is null");
+      }
+      
       StartCoroutine(Process());
    }
 
@@ -67,15 +74,12 @@ public class GameManager : MonoBehaviour
       //게임창에서 시간 멈추기?? 혹은 스폰 안 하기 
       readyButton.gameObject.SetActive(true);
       Debug.Log("초기화 완료");
+
+      yield return null;
       
       //SharedGameData 스폰 
       var dataOp = RunnerController.Runner.SpawnAsync(sharedGameDataPrefabs); // RunnerController가 없음 
       Debug.Log($"dataOp: {dataOp}");
-
-      if (sharedGameDataPrefabs == null)
-      {
-         Debug.Log("프리펩 이상함");
-      }
 
       yield return new WaitUntil(() => dataOp.Status == NetworkSpawnStatus.Spawned);
       // 닉네임 추가
@@ -85,7 +89,7 @@ public class GameManager : MonoBehaviour
       var wfs = new WaitForSeconds(0.5f);
       while (true)
       {
-         var totalCount = RunnerController.Runner.SessionInfo.PlayerCount;
+         var totalCount = RunnerController.Runner.SessionInfo.MaxPlayers;
          var currentCount = SharedGameData.ReadyCount;
          readyText.text = $"Ready?\n({currentCount}/{totalCount})";
 
@@ -107,6 +111,7 @@ public class GameManager : MonoBehaviour
       var playerController = _spawnedPlayer.GetComponent<PlayerController>();
       //playerController.Off(); // 움직이지 못 하게하는 기능 구현 
       
+      /*
       // 카운트다운 UI 활성화 
       readyButton.gameObject.SetActive(false);
       readyCanvas.gameObject.SetActive(false);
@@ -125,6 +130,7 @@ public class GameManager : MonoBehaviour
 
       //네트워크 상의 시간이 완료될 때까지 대기 
       yield return new WaitUntil(() => startTimer.Expired(RunnerController.Runner));
+      */
       
       //게임 시작 
       // 플레이어 동작 

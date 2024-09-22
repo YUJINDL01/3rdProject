@@ -6,12 +6,15 @@ using UnityEngine;
 
 public class RunnerController : MonoBehaviour, INetworkRunnerCallbacks
 {
-    public static NetworkRunner Runner;
     
-      private void Awake() // 게임 오브젝트가 활성화 할 떄 호출 
+    public static NetworkRunner Runner;
+
+    public void Init() // 게임 오브젝트가 활성화 할 떄 호출 
     {
+        Debug.Log("러너 컨트롤러 생성됨");
         DontDestroyOnLoad(this); // 새로운 씬 로드되더라도 파괴되지 않도록 
         Runner = GetComponent<NetworkRunner>(); // 현재 게임 오브젝트에서 NetworkRunner 컴포넌트를 가져와서 Runner 필드에 저장 
+        Debug.Log("러너생성 진짜 됨");
     }
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player) // 플레이어사 게임에 참여 
