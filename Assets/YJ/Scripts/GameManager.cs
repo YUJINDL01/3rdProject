@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
    public Button readyButton;
    public GameObject readyCanvas;
    public TMP_Text readyText;
-   public TMP_Text countdownText;
+   //public TMP_Text countdownText;
 
    public int countdown = 3;
 
@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour
             break;
       }
 
-      readyText.text = $"Ready?\n({SharedGameData.ReadyCount}/{RunnerController.Runner.SessionInfo.PlayerCount})";
+      readyText.text = $"Start!\n({SharedGameData.ReadyCount}/{RunnerController.Runner.SessionInfo.PlayerCount})";
       yield return wfs; 
       
       // 플레이어 스폰 

@@ -9,8 +9,9 @@ public class ModeManager : MonoBehaviour
 
     //public Scrollbar problemNum;
     
-    private Color _clickColors = new Color(0f/255f, 146f/255f, 200f/255f, 255f/255f);
-    private Color _originalColors = new Color(16f/255f, 186f/255f, 250f/255f, 255f/255f);
+    private Color _clickColors = new Color(41f/255f, 109f/255f, 70f/255f, 255f/255f);
+    private Color _originalColors = new Color(12f/255f, 20f/255f, 32f/255f, 255f/255f);
+
     
     Image[] _buttonImage = new Image[3];
 
