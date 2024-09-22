@@ -1,0 +1,74 @@
+{
+    "name": "Wheel",
+    "maps": [
+        {
+            "name": "Wheel",
+            "id": "afdc7b50-0f63-4876-9f5e-ec6611d183e7",
+            "actions": [
+                {
+                    "name": "Left Pedal",
+                    "type": "Value",
+                    "id": "eb158a39-5351-49f6-8e7b-083f2d77a3d0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Right Pedal",
+                    "type": "Value",
+                    "id": "91b89916-f219-4c93-b98c-24c4f97af65e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Wheel",
+                    "type": "Value",
+                    "id": "4dd0b03f-49c5-4e51-8364-8d83c818d4b1",
+                    "expectedControlType": "Stick",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "af3c4f07-5055-493e-8510-3ee6b2f17ea4",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left Pedal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1d20f2f1-76fc-4e4b-b55f-9fd03d4b9472",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Wheel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4c8800df-8f44-4f4a-8664-01381ed19c3a",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right Pedal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
