@@ -3,7 +3,157 @@ guid: 8a945ad54a786804fabaf35b676bcf88
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #3
+    second: {fileID: 2100000, guid: 14b859baa86a1994a944944b900892eb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: aluminium
+    second: {fileID: 2100000, guid: 419f3dad127287d4bb13d3d8879b70f7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: belt
+    second: {fileID: 2100000, guid: 371aa3872c27b7642a0ea1842a52a29f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: black
+    second: {fileID: 2100000, guid: df4af959d90f71c4a9884f3c229e3b3a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: black.001
+    second: {fileID: 2100000, guid: 8db361beb7fe7d94cbca039f2ffea590, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: board
+    second: {fileID: 2100000, guid: c450980d0ee081d4f8c57f0ef116980c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: carpet
+    second: {fileID: 2100000, guid: 35afa65a2d37db64ead14246d3a3cef5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: chrome
+    second: {fileID: 2100000, guid: a4b16ba64db4b05458b8e95e11d89171, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color2
+    second: {fileID: 2100000, guid: c51df9d99e1920841b3e4765e63c65ab, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dinghyblack
+    second: {fileID: 2100000, guid: ddda73a0f56218143aa306910d08f530, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: display1
+    second: {fileID: 2100000, guid: 19a42650b20d4564d9f437244921f804, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: display2
+    second: {fileID: 2100000, guid: f83904761165a184790d9c37a8caefd1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glass
+    second: {fileID: 2100000, guid: ca19a6bad31d5104096a4f761a924947, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: headlight_tex
+    second: {fileID: 2100000, guid: 74eae2216983187449263dac75bce0c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: interiortex
+    second: {fileID: 2100000, guid: 85d4a389f9024aa41a2856d59b22a2f2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lather
+    second: {fileID: 2100000, guid: 588f3cecbe2138d46a29def42b23ed26, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: leatherBlack
+    second: {fileID: 2100000, guid: b99ddbe6e6ea6a449bb8985766cb4095, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: leatherb
+    second: {fileID: 2100000, guid: a78fc44a804fdaf47b7e003e81d252fa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: leatherc
+    second: {fileID: 2100000, guid: dc68b8997636bb64fb8fe7e7e12cb8c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: logo
+    second: {fileID: 2100000, guid: 811bd5d5657fa5649afb5c2ae62d4932, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal.001
+    second: {fileID: 2100000, guid: f182ed9adfca8734c91186cd514a2f5c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: nothing_
+    second: {fileID: 2100000, guid: 6c9d674a26f295642bd02707251ed172, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: paint
+    second: {fileID: 2100000, guid: e487589f1def5a345a56bff97e554aa7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: plastred
+    second: {fileID: 2100000, guid: 40ba0f36ef18c1649861a17ca6784d51, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: roll
+    second: {fileID: 2100000, guid: d2049d25c1b0a4d43bf3581c139e7952, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: rubber.001
+    second: {fileID: 2100000, guid: 4d80d95f9e079a94997be8e44bc60a61, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: speaker
+    second: {fileID: 2100000, guid: 434a1fbd7c13e91459f6edffc9088d56, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stitches
+    second: {fileID: 2100000, guid: e30058af4a2e053429a823724854261f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stitchesvl
+    second: {fileID: 2100000, guid: 9a04522277d58714fa354c143125069d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wheel_metal.002
+    second: {fileID: 2100000, guid: 057ad1b04dd1e244b8e28b74d66a5b90, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

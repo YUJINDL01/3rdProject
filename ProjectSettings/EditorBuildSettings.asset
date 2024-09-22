@@ -4,25 +4,6 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/MJ/Scene/Start.unity
-    guid: acfd74d4549c07b448fa6973d763c9bb
-  - enabled: 1
-    path: Assets/YJ/Scenes/Written_Waiting.unity
-    guid: 14b48f5b9e001b2428025377f2cab71a
-  - enabled: 1
-    path: Assets/YJ/Scenes/Written_TEST.unity
-    guid: d6b76b0680e45d94186300f6663e86d0
-  - enabled: 1
-    path: Assets/YJ/Scenes/Written_Result.unity
-    guid: 6f5c63fc5e265dc4796a51d438662e81
-  - enabled: 1
-    path: Assets/YW/Scenes/CarNew.unity
-    guid: 6ff9f3c16a7abbd4a82f6eca8175dd5e
-  - enabled: 1
-    path: Assets/MJ/Scene/End.unity
-    guid: 830e4b9dcd08bd948a41aef0cf50c423
-  m_configObjects:
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_Scenes: []
+  m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
