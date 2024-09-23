@@ -33,24 +33,24 @@ public class ProblemManager : MonoBehaviour
    
    private Color ClickColor = Color.blue;
    private Color originalColor = Color.white;
-   
+
+   public static ProblemManager Instance;
    //매개변수를 사용하는 것과 전역변수를 사용하는 것의 차이?? -> 의도에 따라, 매개변수를 사용하는 경우 다른 클래스에서도 조작 가능 
    //매개 변수 너무 많음 꼭 필요한 건지 생각해 볼 것 
    
+   
    private void Start()
    {
+      Instance = this;
       //버튼의 text에 접근하기
       //optionButtons = optionButtons.Find<"TMP(TMP)">();
       //TMP_Text[] buttonText = optionButtons.GetComponentInChildren<TMP_Text>();
-      int problemQuantity = 10;
+      int problemQuantity = 5;
       problemNumber = 0;
-
-      answerSheet = new int[problemQuantity, clickedButtonArray.Length];
-      
       InitializeProblems(problemQuantity, problemNumber);
    }
    
-   private void InitializeProblems(int problemQuantity, int problemNumber)
+   public void InitializeProblems(int problemQuantity, int problemNumber)
    {
       //랜덤으로 문제 뽑고 저장 //초기에 1번만 실행 (setting) 
       MRandoms(problemQuantity);
@@ -65,6 +65,8 @@ public class ProblemManager : MonoBehaviour
       
       //출제 // 지속적으로 반복 
       MProblems(problemNumber);
+      
+      answerSheet = new int[problemQuantity, clickedButtonArray.Length];
    } // 초기 설정을 위한 거랑 지속적으로 필요한 것을 나누고 전역변수와 매개변수에 대해 다시 생각해볼 것  
    
    private List<Problem> MRandoms(int problemQuantity)
@@ -75,6 +77,9 @@ public class ProblemManager : MonoBehaviour
          
          switch (problemQuantity)
          {
+            case 5:
+               numbers = new int[] { 1, 1, 1, 1, 1, 0 };
+               break;
             case 10:
                numbers = new int[] { 4, 2, 2, 1, 1, 0 }; // 총합 25
                Debug.Log(numbers[0]);
@@ -131,7 +136,7 @@ public class ProblemManager : MonoBehaviour
       
    }
 
-   private void CheckCurrentNumber(int problemNumber)
+   public void CheckCurrentNumber(int problemNumber)
    {
       if (problemNumber == 0)
       {
@@ -294,11 +299,11 @@ public class ProblemManager : MonoBehaviour
          }
       }
 
-      if (clickedButtonArray[num-1] == true)
+      if (clickedButtonArray[num] == true)
       {
          buttonImage.color = originalColor;
          
-         clickedButtonArray[num-1] = false;
+         clickedButtonArray[num] = false;
       }
       else
       {
@@ -306,7 +311,7 @@ public class ProblemManager : MonoBehaviour
          {
             buttonImage.color = ClickColor;
             
-            clickedButtonArray[num-1] = true;
+            clickedButtonArray[num] = true;
          }
       }
    }
@@ -332,6 +337,8 @@ public class ProblemManager : MonoBehaviour
       
       //이거 실행하면 위에 버튼에 답안 저장된거 표시되게 하기 
    }
+   
+   
 
     /*
    private void MAnswerButtonChange()

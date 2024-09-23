@@ -9,7 +9,8 @@ public class LoginManager : MonoBehaviour
     public TMP_InputField password;
     public TMP_InputField Nickname;
     public TMP_Text notify;
-    
+
+    public static string Value;
 
     private void Start()
     {
@@ -27,6 +28,7 @@ public class LoginManager : MonoBehaviour
             PlayerPrefs.SetString(id.text, password.text);
             notify.text = "아이디 생성이 완료되었습니다.";
             Debug.Log("안녕하세요");
+            
             
         }
         else
@@ -52,6 +54,7 @@ public class LoginManager : MonoBehaviour
             
             PlayerPrefs.SetString("eachNickname", Nick);
             Debug.Log(PlayerPrefs.GetString("eachNickname"));
+            LoginManager.Value = Nick;
         }
         else
         {
