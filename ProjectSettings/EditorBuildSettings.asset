@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/YJ/Scenes/Written_RoomList.unity
     guid: f76fc416c01990440b5191b9b76b7401
   - enabled: 1
+    path: Assets/YJ/Scenes/Written_Result.unity
+    guid: 6f5c63fc5e265dc4796a51d438662e81
+  - enabled: 1
     path: Assets/YW/Scenes/YWtestMap.unity
     guid: 9750d03f78a4e1743aef4c963ba009d9
   - enabled: 1

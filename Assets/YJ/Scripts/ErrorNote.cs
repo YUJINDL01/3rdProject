@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class ErrorNote : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+  public GameObject result;
+  public GameObject anlyButton;
+  public GameObject retryButton;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  public void errorNote()
+  {
+    result.SetActive(true);
+    anlyButton.SetActive(false);
+    //retryButton.SetActive(true);
+    retryButton.SetActive(true);
+  }
 }
