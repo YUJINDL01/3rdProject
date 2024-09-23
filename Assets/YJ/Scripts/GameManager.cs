@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
    public TMP_Text readyText;
    //public TMP_Text countdownText;
 
+   public GameObject quizCanvas;
+
    public int countdown = 3;
 
    private TickTimer startTimer;
@@ -31,6 +33,7 @@ public class GameManager : MonoBehaviour
    {
       Instance = this;
       readyCanvas.SetActive(true);
+      quizCanvas.SetActive(false);
    }
 
    public void Start()
@@ -74,6 +77,7 @@ public class GameManager : MonoBehaviour
       _isReady = false;
       //게임창에서 시간 멈추기?? 혹은 스폰 안 하기 
       readyButton.gameObject.SetActive(true);
+      readyCanvas.gameObject.SetActive(true);
       Debug.Log("초기화 완료");
 
       yield return null;
@@ -92,6 +96,7 @@ public class GameManager : MonoBehaviour
       {
          var totalCount = RunnerController.Runner.SessionInfo.MaxPlayers;
          var currentCount = SharedGameData.ReadyCount;
+         Debug.Log($"totalCount: {totalCount}, currentCount: {currentCount}");
          readyText.text = $"Ready?\n({currentCount}/{totalCount})";
 
          yield return wfs;
@@ -148,8 +153,10 @@ public class GameManager : MonoBehaviour
       //게임 시작 
       // 플레이어 동작 
       //RunnerController.Runner.SpawnAsync(gameCanvas);
-      StartCoroutine(ProblemTimer.Instance.Timers()); //코루틴 실행하는 법
+      quizCanvas.SetActive(true);
       readyCanvas.SetActive(false);
+      StartCoroutine(ProblemTimer.Instance.Timers()); //코루틴 실행하는 법
+      Debug.Log("레디 끝남");
    }
    
 }
