@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NewCarControl : MonoBehaviour
 {
@@ -60,7 +61,12 @@ public class NewCarControl : MonoBehaviour
                 transform.Rotate(0, rotationAmount, 0);
                 currentRotation = newRotation; // 회전 각도 업데이트
             }
-            
+
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                
+                SceneManager.LoadScene("Fail");
+            }
             
             
             

@@ -1,7 +1,10 @@
+
 using System;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class OnCollisionDetector : MonoBehaviour
@@ -10,7 +13,9 @@ public class OnCollisionDetector : MonoBehaviour
     // Collider 설정하고
     // On Collision Enter, OnTriggerEnter 통해서 작성
 
-
+    public AudioSource audioSource;
+    public AudioClip stoneSound;
+    
     public TMP_Text collisionText; // 불러올 텍스트 변수 지정
 
     private void Start()
@@ -56,7 +61,9 @@ public class OnCollisionDetector : MonoBehaviour
         {
             Debug.Log("연석 탑승");
             collisionText.text = "바퀴가 연석에 접촉할 시 실격입니다.";
-            Invoke("ClearText", 3f);
+            audioSource.PlayOneShot(stoneSound);
+            
+            Invoke("ClearText", 2f);
         }
         
         
@@ -69,6 +76,7 @@ public class OnCollisionDetector : MonoBehaviour
         if (collisionText != null)
         {
             collisionText.text = ""; // 텍스트를 빈 문자열로 설정하여 지우기
+            SceneManager.LoadScene("Fail");
         }
     }
     

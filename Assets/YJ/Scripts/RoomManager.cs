@@ -15,8 +15,19 @@ public class RoomManager : MonoBehaviour
    
     public TMP_InputField roomNameInputField;
     public TMP_InputField participantsInputField;
-        
+    public TMP_InputField problemCountInputField;
+    
     private static NetworkRunner Runner; // 현재 사용 중인 네트워크 러너의 인스턴스를 저장, 정적으로 선언되어 있으며, 클래스의 모든 인스턴스가 이 변수를 공유 
+
+    public enum ProblemPart : int
+    {
+        s1,
+        s2,
+        l,
+        p,
+        s, 
+        v,
+    }
     
     public void CreateRoom()  
     {
@@ -44,7 +55,19 @@ public class RoomManager : MonoBehaviour
         
         int maxPlayers = int.Parse(participantsInputField.text); 
         Debug.Log($"maxPlayers : {maxPlayers}");
-
+        
+        //int problemCount = int.Parse(problemCountInputField.text);
+        //Debug.Log($"problemCount: {problemCount}");
+        
+        // 문제 숫자랑 분야도 넘겨주고 싶음 
+        /*
+        var sessionProperties = new SessionProperties()//new Dictionary<int, SessionProperty>()
+        {
+            {"problemNum", problemCount},
+            //customProps["problemNum"] = problemCount;
+        };
+        */
+        
         Runner.StartGame(new StartGameArgs //새 게임 세션을 시작하는 메소드, 필요한 설정을 전달 // 왜 에러가 생길까??
         {
             SessionName = roomName, // 생성할 방의 이름 
@@ -52,6 +75,7 @@ public class RoomManager : MonoBehaviour
             Scene = SceneRef.FromIndex(
                 SceneUtility.GetBuildIndexByScenePath(MainSceneName)), // 메인 장면의 인덱스를 가져와 세션에서 사용할 장면으로 설정 
             PlayerCount = maxPlayers, // 최대 인원수 ??
+            //SessionProperties = customProps,
             //MatchmakingMode = MatchmakingMode.FillRoom, -> 참여하는 쪽에서 추가 하는 것 
             //IsOpen = true, 
             //IsVisible = true, 

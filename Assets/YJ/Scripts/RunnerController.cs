@@ -1,13 +1,16 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Fusion;
 using Fusion.Sockets;
 using UnityEngine;
+
 
 public class RunnerController : MonoBehaviour, INetworkRunnerCallbacks
 {
     
     public static NetworkRunner Runner;
+    public NetworkObject objectToOwn;
 
     public void Init() // 게임 오브젝트가 활성화 할 떄 호출 
     {
@@ -20,6 +23,21 @@ public class RunnerController : MonoBehaviour, INetworkRunnerCallbacks
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player) // 플레이어사 게임에 참여 
     {
         Debug.Log($"OnPlayerJoined : {player.PlayerId}");
+        
+        /*
+        Debug.Log("###사람왔다");
+        // 첫 번째 플레이어인지 확인
+        if (runner.ActivePlayers.ToList().Count == 1&& objectToOwn != null)
+        {
+            // 소유권 부여
+            objectToOwn.AssignInputAuthority(player);
+            Debug.Log($"Player {player.PlayerId} has ownership of the object.");
+        }
+        else if (objectToOwn == null)
+        {
+            Debug.Log("왜 소유권 있는 물체 없음 !!");
+        }
+        */
     }
 
     public void OnConnectedToServer(NetworkRunner runner) // 서버에 연결되었을 때 
