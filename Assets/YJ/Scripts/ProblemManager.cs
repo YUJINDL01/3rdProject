@@ -268,7 +268,7 @@ public class ProblemManager : MonoBehaviour
    public void MButton(int buttonNumber)
    {
       MAnswerSheet();
-      MAnswerButtonChange();
+      //MAnswerButtonChange();
       problemNumber = buttonNumber;
       CheckCurrentNumber(problemNumber);
    }
@@ -276,7 +276,7 @@ public class ProblemManager : MonoBehaviour
    public void MMButton(int buttonNumber)
    {
       MAnswerSheet();
-      MAnswerButtonChange();
+      //MAnswerButtonChange();
       problemNumber += buttonNumber;
       CheckCurrentNumber(problemNumber);
    }
@@ -333,6 +333,7 @@ public class ProblemManager : MonoBehaviour
       //이거 실행하면 위에 버튼에 답안 저장된거 표시되게 하기 
    }
 
+    /*
    private void MAnswerButtonChange()
    {
       //답안 저장 후 문제 번호에 색깔 변하게 하기 
@@ -340,6 +341,8 @@ public class ProblemManager : MonoBehaviour
       int answerLength = 0;
       //보류 !
    }
+   */
+    
    /*
    private void Answer()
     {
