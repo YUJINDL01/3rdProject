@@ -2197,6 +2197,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 364
       objectReference: {fileID: 0}
+    - target: {fileID: 8344200316712406443, guid: e7b7d8d00e4332543976466189738d13, type: 3}
+      propertyPath: m_text
+      value: 00:10
+      objectReference: {fileID: 0}
     - target: {fileID: 8453716318187555983, guid: e7b7d8d00e4332543976466189738d13, type: 3}
       propertyPath: SortKey
       value: 1958595959

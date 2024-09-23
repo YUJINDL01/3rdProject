@@ -24,7 +24,7 @@ public class ProblemTimer : MonoBehaviour
     public IEnumerator Timers()
     {
         Debug.Log("타이머 시작");
-        timerSec = 7; 
+        timerSec = 10; 
         int currentTime = timerSec;
         timer.color = _originColor;
 
