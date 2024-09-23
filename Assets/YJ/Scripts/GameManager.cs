@@ -32,8 +32,9 @@ public class GameManager : MonoBehaviour
    private void Awake()
    {
       Instance = this;
+     
       readyCanvas.SetActive(true);
-      quizCanvas.SetActive(false);
+      quizCanvas.SetActive(true);
    }
 
    public void Start()
@@ -76,8 +77,8 @@ public class GameManager : MonoBehaviour
       //초기화 
       _isReady = false;
       //게임창에서 시간 멈추기?? 혹은 스폰 안 하기 
-      readyButton.gameObject.SetActive(true);
-      readyCanvas.gameObject.SetActive(true);
+      //readyButton.gameObject.SetActive(true);
+      //readyCanvas.gameObject.SetActive(true);
       Debug.Log("초기화 완료");
 
       yield return null;
@@ -85,8 +86,12 @@ public class GameManager : MonoBehaviour
       //SharedGameData 스폰 
       var dataOp = RunnerController.Runner.SpawnAsync(sharedGameDataPrefabs); // RunnerController가 없음 
       Debug.Log($"dataOp: {dataOp}");
-
-      yield return new WaitUntil(() => dataOp.Status == NetworkSpawnStatus.Spawned);
+      // yield return new WaitUntil(() => dataOp.Status == NetworkSpawnStatus.Spawned);
+      while (dataOp.Status != NetworkSpawnStatus.Spawned)
+      {
+         yield return null;
+      }
+      
       // 닉네임 추가
       //dataOp.Object.name = $"{nameof(SharedGameData)}: {dataOp.Object.Id}";
 
@@ -110,9 +115,13 @@ public class GameManager : MonoBehaviour
       
       // 플레이어 스폰 
       var op = RunnerController.Runner.SpawnAsync(playerPrefab);
-      yield return new WaitUntil(() => dataOp.Status == NetworkSpawnStatus.Spawned);
+      while (op.Status != NetworkSpawnStatus.Spawned)
+      {
+         yield return null;
+      }
       _spawnedPlayer = op.Object;
-      
+
+      Debug.Log("Player Spawned!");
       
       GameObject parentObject = GameObject.Find("Players"); // 부모 오브젝트의 이름 -> 생성된 게임 오브젝트의 프리팹, 그리고 생성된 오브젝트를 다른 변수에 저장하고 클론을 부모로 배정
       if (parentObject != null)
@@ -153,7 +162,7 @@ public class GameManager : MonoBehaviour
       //게임 시작 
       // 플레이어 동작 
       //RunnerController.Runner.SpawnAsync(gameCanvas);
-      quizCanvas.SetActive(true);
+      //quizCanvas.SetActive(true);
       readyCanvas.SetActive(false);
       StartCoroutine(ProblemTimer.Instance.Timers()); //코루틴 실행하는 법
       Debug.Log("레디 끝남");

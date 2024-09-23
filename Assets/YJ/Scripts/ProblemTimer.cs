@@ -24,7 +24,7 @@ public class ProblemTimer : MonoBehaviour
     public IEnumerator Timers()
     {
         Debug.Log("타이머 시작");
-        timerSec = 11; 
+        timerSec = 7; 
         int currentTime = timerSec;
         timer.color = _originColor;
 
@@ -33,7 +33,7 @@ public class ProblemTimer : MonoBehaviour
             yield return new WaitForSecondsRealtime(1f);
             currentTime--;
 
-            if (currentTime <= 5)
+            if (currentTime <= 3)
             {
                 timer.color = _iColor;
             }
