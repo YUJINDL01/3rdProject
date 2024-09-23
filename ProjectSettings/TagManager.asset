@@ -14,6 +14,7 @@ TagManager:
   - Wiper
   - HeadLight
   - Warning
+  - Stone
   layers:
   - Default
   - TransparentFX

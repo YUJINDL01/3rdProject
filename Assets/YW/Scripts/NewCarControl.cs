@@ -64,7 +64,8 @@ public class NewCarControl : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                SceneManager.LoadScene(8);
+                
+                SceneManager.LoadScene("Fail");
             }
             
             
