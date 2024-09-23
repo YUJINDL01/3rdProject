@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 {
    public NetworkPrefabRef sharedGameDataPrefabs;
    public NetworkPrefabRef playerPrefab;
-   public NetworkPrefabRef gameCanvas;
+   //public NetworkPrefabRef gameCanvas;
 
 
    public Button readyButton;
@@ -24,12 +24,13 @@ public class GameManager : MonoBehaviour
    private TickTimer startTimer;
    private NetworkObject _spawnedPlayer;
    private bool _isReady;
-
+   
    public static GameManager Instance;
 
    private void Awake()
    {
       Instance = this;
+      readyCanvas.SetActive(true);
    }
 
    public void Start()
@@ -106,6 +107,18 @@ public class GameManager : MonoBehaviour
       var op = RunnerController.Runner.SpawnAsync(playerPrefab);
       yield return new WaitUntil(() => dataOp.Status == NetworkSpawnStatus.Spawned);
       _spawnedPlayer = op.Object;
+      
+      
+      GameObject parentObject = GameObject.Find("Players"); // 부모 오브젝트의 이름 -> 생성된 게임 오브젝트의 프리팹, 그리고 생성된 오브젝트를 다른 변수에 저장하고 클론을 부모로 배정
+      if (parentObject != null)
+      {
+         _spawnedPlayer.transform.SetParent(parentObject.transform);
+      }
+      else
+      {
+         Debug.LogWarning("부모 오브젝트를 찾을 수 없습니다.");
+      }
+      
       //_spawnedPlayer.name = $"Player: {_spawnedPlayer.Id}";
 
       var playerController = _spawnedPlayer.GetComponent<PlayerController>();
@@ -134,8 +147,9 @@ public class GameManager : MonoBehaviour
       
       //게임 시작 
       // 플레이어 동작 
-      RunnerController.Runner.SpawnAsync(gameCanvas);
-
+      //RunnerController.Runner.SpawnAsync(gameCanvas);
+      StartCoroutine(ProblemTimer.Instance.Timers()); //코루틴 실행하는 법
+      readyCanvas.SetActive(false);
    }
    
 }
