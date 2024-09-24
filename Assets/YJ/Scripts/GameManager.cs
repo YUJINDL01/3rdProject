@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour
 
    private TickTimer startTimer;
    
-   public NetworkObject parentObject;
    private NetworkObject _spawnedPlayer;
    private bool _isReady;
    

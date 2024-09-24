@@ -32,6 +32,7 @@ public class ProblemTimer : MonoBehaviour
 
         while (currentTime > 0)
         {
+            timer.text = $"{00:00}:{currentTime:00}";
             yield return new WaitForSecondsRealtime(1f);
             currentTime--;
 
@@ -40,24 +41,26 @@ public class ProblemTimer : MonoBehaviour
                 timer.color = _iColor;
             }
 
-            timer.text = $"{00:00}:{currentTime:00}";
+           // timer.text = $"{00:00}:{currentTime:00}";
         }
 
         if (currentTime == 0) // 각 문제가 끝나는 이벤트에 매소드 등록하는 방식으로 변경
         {
             timer.text = String.Empty;
-            ScoreManager.Instance.AnswerCheck();
-
-            yield return new WaitForSecondsRealtime(1f);
         }
 
         yield return null;
         
-        TimeDone();
+        StartCoroutine(TimeDone());
     }
 
-    void TimeDone()
+    private IEnumerator TimeDone()
     {
+        ScoreManager.Instance.AnswerCheck(timeOver);
+        //ProblemManager.Instance.MAnswerSheet();
+        yield return new WaitForSecondsRealtime(1f);
+        ScoreManager.Instance.OffOX();
+        
         timeOver++;
         
         if (timeOver == 5)

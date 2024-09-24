@@ -29,5 +29,5 @@ public class SharedGameData : NetworkBehaviour
         ReadyCount++;
         Debug.Log($"ReadyCount Changed : {ReadyCount}");
     }
-    
+
 }

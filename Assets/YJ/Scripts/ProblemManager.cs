@@ -25,7 +25,6 @@ public class ProblemManager : MonoBehaviour
    public List<Button> answerButtons;
    public Button[] moveButton;
    
-   public List<Problem> problemsList;
    public int problemNumber;
 
    public int[,] answerSheet;
@@ -33,6 +32,9 @@ public class ProblemManager : MonoBehaviour
    
    private Color ClickColor = Color.blue;
    private Color originalColor = Color.white;
+   
+   public List<Problem> problemsList;
+   public List<int> clickedButtonNum;
 
    public static ProblemManager Instance;
    //매개변수를 사용하는 것과 전역변수를 사용하는 것의 차이?? -> 의도에 따라, 매개변수를 사용하는 경우 다른 클래스에서도 조작 가능 
@@ -117,6 +119,7 @@ public class ProblemManager : MonoBehaviour
          }
          Debug.Log("randoms end");
          
+        // ScoreManager.Instance.ProblemSave();
       return problemsList; 
    }
 
@@ -273,7 +276,6 @@ public class ProblemManager : MonoBehaviour
    
    public void MButton(int buttonNumber)
    {
-      MAnswerSheet();
       //MAnswerButtonChange();
       problemNumber = buttonNumber;
       CheckCurrentNumber(problemNumber);
@@ -281,7 +283,6 @@ public class ProblemManager : MonoBehaviour
 
    public void MMButton(int buttonNumber)
    {
-      MAnswerSheet();
       //MAnswerButtonChange();
       problemNumber += buttonNumber;
       CheckCurrentNumber(problemNumber);
@@ -300,11 +301,11 @@ public class ProblemManager : MonoBehaviour
          }
       }
 
-      if (clickedButtonArray[num] == true)
+      if (clickedButtonArray[num-1] == true)
       {
          buttonImage.color = originalColor;
          
-         clickedButtonArray[num] = false;
+         clickedButtonArray[num-1] = false;
       }
       else
       {
@@ -312,21 +313,25 @@ public class ProblemManager : MonoBehaviour
          {
             buttonImage.color = ClickColor;
             
-            clickedButtonArray[num] = true;
+            clickedButtonArray[num-1] = true;
          }
       }
    }
 
    public void MAnswerSheet()
    {
+      clickedButtonNum.Clear();
+      
       // true인 값만 확인하여서 답 번호 저장 
       for (int j = 0; j < clickedButtonArray.Length; j++)
       {
+         
          if (clickedButtonArray[j] == true)
          {
             answerSheet[problemNumber, j] = j + 1;
             Debug.Log($"No: {problemNumber+1}, Answer: {j + 1}"); // 몇 번에 답이 몇 이니 ~ // 보이는 번호랑 문제랑 동일하게 해 놈 // 답 비교할 땐 수정 
             
+            clickedButtonNum.Add(j+1);
          }
       }
       

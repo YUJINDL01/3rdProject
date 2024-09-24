@@ -40,10 +40,13 @@ public class PlayerControll : NetworkBehaviour
         nicknameText.text = nickname; // 입력받은 닉네임을 ui에 설정 
         Debug.Log($"OnNicknameChanged: {nickname}");
     }
-
-    private void OnScoreChanged(int score) // 점수가 변경될 떄 호출 
+    
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    public void RpcScore(int currentScore)
     {
-        scoreText.text = $"Score\n{score}";
+        scoreText.text = currentScore.ToString(); // 내거만 바뀌어야 하는데 공유가 안 됨
+        
+        Debug.Log($"currentScore : {currentScore}");
     }
   
     private void Update()
