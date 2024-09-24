@@ -1525,8 +1525,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f4f84759bea734c4ea077f9a6f9fe15f, type: 3}
   m_PrefabInstance: {fileID: 489650103}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &285355624
-BoxCollider:
+--- !u!64 &285355624
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1543,9 +1543,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.019999998, y: 0.019433971, z: 0.021490213}
-  m_Center: {x: -0.0000000016668293, y: 0.00015155043, z: -0.0024495826}
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4493585093827132993, guid: f4f84759bea734c4ea077f9a6f9fe15f, type: 3}
 --- !u!1 &291798715
 GameObject:
   m_ObjectHideFlags: 0
@@ -3414,7 +3415,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: f4f84759bea734c4ea077f9a6f9fe15f, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 582bd87dc1e53784188e42a0aee0ae15, type: 2}
+      objectReference: {fileID: 2100000, guid: 35bf705655a3b484d823641d0b11a4c1, type: 2}
     - target: {fileID: 919132149155446097, guid: f4f84759bea734c4ea077f9a6f9fe15f, type: 3}
       propertyPath: m_Name
       value: road
