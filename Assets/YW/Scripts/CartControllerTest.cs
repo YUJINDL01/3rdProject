@@ -176,7 +176,10 @@ public class CartControllerTest : MonoBehaviour
     private bool signalLeft;
     private bool signalRight;
     private bool sideBreakLock = true;  // true 안 돼 있으면 false로 시작하니까 bool이 암것도 없는 상태에서 true하면 ㅂ뭐 무슨 코드가 실행되게 이런 식이라서
-    
+
+    public Animator wiperAnimator;
+
+    public Animator wiperAnimator2;
      // 5초 안에 하라는 안내 음성 후 타이머 떠야 함 - 코루틴으로 음성 실행되는 밑에 코드 있으면 될 듯
      /// <summary>
      /// //////////////////////////////////////////////////////////////////////////////////////
@@ -283,7 +286,7 @@ public class CartControllerTest : MonoBehaviour
         // 4 of 2 선택하기
         // 1, 2, 3, 4
         // int i = Random.Range(1, 5); // 5는 빼고 1234 중에 하나 추출
-        fourState1 = (FourState)Random.Range(1, 5); // int 형 i를 fourState 타입으로 변환
+        fourState1 = FourState.Wiper; //(FourState)Random.Range(1, 5); // int 형 i를 fourState 타입으로 변환
         
         
         // 두 번째 뽑는 건 중복 안 돼야 돼서 반복문과 조건문이 필요
@@ -476,7 +479,7 @@ public class CartControllerTest : MonoBehaviour
         yield return StartCoroutine(PlaySoundProcess(wiperSoundGo, false));
         yield return StartCoroutine(PlaySoundProcess(bbiSound, false));
         state = State.WaitWiper;
-        yield return StartCoroutine(TimerTextCoroutine(5f, -5, () => wiperImage.gameObject.activeSelf));
+        yield return StartCoroutine(TimerTextCoroutine(5f, -5, () => wiperAnimator.GetCurrentAnimatorStateInfo(0).IsName("Move")));
         if (isOkay)
         {
             yield return StartCoroutine(PlaySoundProcess(offWiperSoundGo, false));
@@ -486,7 +489,7 @@ public class CartControllerTest : MonoBehaviour
         
             //while은 뒤가 false일 때까지 진행 , until은 true일 때까지
             //while은 뒤가 false일 때까지 진행 , until은 true일 때까지
-            yield return StartCoroutine(TimerTextCoroutine(5f, -5, () => !wiperImage.gameObject.activeSelf));
+            yield return StartCoroutine(TimerTextCoroutine(5f, -5, () => wiperAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle")));
             
         }
         
@@ -761,29 +764,34 @@ public class CartControllerTest : MonoBehaviour
 
     public void Wiper()
     {
-
-        if (wiperImage.gameObject.activeSelf) // activeSelf는 게임오브젝트가 켜지고 껴지고 판단하는 거 켜져 있는 경우 액티브
-        {
-            if (state != State.WaitOffWiper)
-            {
-                Debug.Log("와이퍼 켤 때 아님");
-                return;
-            }
-            
-            wiperImage.gameObject.SetActive(false);
-        }
-        else
+        bool isIdleState = wiperAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle");
+        if (isIdleState)
         {
             if (state != State.WaitWiper)
             {
                 Debug.Log("와이퍼 켤 때 아님");
                 return;
             }
-
-            Debug.Log("와이퍼");
-            state = State.Wiper;
             
-            wiperImage.gameObject.SetActive(true);
+            Debug.Log("와이퍼 켬");
+            state = State.Wiper;
+
+            wiperAnimator.SetTrigger("ToMove");
+            wiperAnimator2.SetTrigger("ToMove");
+        }
+        else
+        {
+            if (state != State.WaitOffWiper)
+            {
+                Debug.Log("와이퍼 끌 때 아님");
+                return;
+            }
+            
+            Debug.Log("와이퍼 끔");
+            state = State.OffWiper;
+
+            wiperAnimator.SetTrigger("ToIdle");
+            wiperAnimator2.SetTrigger("ToIdle");
             
         }
     }
