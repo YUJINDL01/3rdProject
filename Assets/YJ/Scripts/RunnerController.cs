@@ -10,7 +10,7 @@ public class RunnerController : MonoBehaviour, INetworkRunnerCallbacks
 {
     
     public static NetworkRunner Runner;
-    public NetworkObject objectToOwn;
+    //public NetworkObject objectToOwn;
 
     public void Init() // 게임 오브젝트가 활성화 할 떄 호출 
     {
@@ -22,7 +22,7 @@ public class RunnerController : MonoBehaviour, INetworkRunnerCallbacks
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player) // 플레이어사 게임에 참여 
     {
-        Debug.Log($"OnPlayerJoined : {player.PlayerId}");
+        //Debug.Log($"OnPlayerJoined : {player.PlayerId}");
         
         /*
         Debug.Log("###사람왔다");

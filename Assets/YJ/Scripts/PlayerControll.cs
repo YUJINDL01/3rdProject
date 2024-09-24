@@ -14,18 +14,26 @@ public class PlayerControll : NetworkBehaviour
 
    public override void Spawned() //네트워크에서 객체가 생성될 때 호출
     {
+        Debug.Log("Spawned");
+        Transform parent = GameObject.Find("Quiz/Players").transform;
+        transform.SetParent(parent);
+        
         if (HasStateAuthority) 
         {
             Instance = this;
-            RpcSetNickname(LoginManager.Value);
+            
+            //parent = GameObject.Find("Quiz/Players").transform;
+            //transform.SetParent(parent);
+            
         }
     }
 
     public override void Despawned(NetworkRunner runner, bool hasState)
     {
+        Debug.Log("DeSpawned");
         //ScoreManager.Instance.onScoreChanged -= OnScoreChanged; //이벤트 리스너?? 메모리 누수 방지??
     }
-
+    
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)] // 닉네임을 모든 클라이언트에 설정 
     public void RpcSetNickname(string nickname)
     { 

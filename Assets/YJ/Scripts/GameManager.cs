@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
    public int countdown = 3;
 
    private TickTimer startTimer;
+   
+   public NetworkObject parentObject;
    private NetworkObject _spawnedPlayer;
    private bool _isReady;
    
@@ -76,9 +78,6 @@ public class GameManager : MonoBehaviour
    {
       //초기화 
       _isReady = false;
-      //게임창에서 시간 멈추기?? 혹은 스폰 안 하기 
-      //readyButton.gameObject.SetActive(true);
-      //readyCanvas.gameObject.SetActive(true);
       Debug.Log("초기화 완료");
 
       yield return null;
@@ -113,6 +112,8 @@ public class GameManager : MonoBehaviour
       readyText.text = $"Start!\n({SharedGameData.ReadyCount}/{RunnerController.Runner.SessionInfo.PlayerCount})";
       yield return wfs; 
       
+      
+      /*
       // 플레이어 스폰 
       var op = RunnerController.Runner.SpawnAsync(playerPrefab);
       while (op.Status != NetworkSpawnStatus.Spawned)
@@ -123,21 +124,22 @@ public class GameManager : MonoBehaviour
 
       Debug.Log("Player Spawned!");
       
-      GameObject parentObject = GameObject.Find("Players"); // 부모 오브젝트의 이름 -> 생성된 게임 오브젝트의 프리팹, 그리고 생성된 오브젝트를 다른 변수에 저장하고 클론을 부모로 배정
+      //GameObject parentObject = GameObject.Find("Players"); // 부모 오브젝트의 이름 -> 생성된 게임 오브젝트의 프리팹, 그리고 생성된 오브젝트를 다른 변수에 저장하고 클론을 부모로 배정
       if (parentObject != null)
       {
+         Debug.Log($"parentObject : {parentObject}");
          _spawnedPlayer.transform.SetParent(parentObject.transform);
       }
       else
       {
-         Debug.LogWarning("부모 오브젝트를 찾을 수 없습니다.");
+         Debug.Log("부모 오브젝트를 찾을 수 없습니다.");
       }
       
       //_spawnedPlayer.name = $"Player: {_spawnedPlayer.Id}";
 
       var playerController = _spawnedPlayer.GetComponent<PlayerController>();
       //playerController.Off(); // 움직이지 못 하게하는 기능 구현 
-      
+      */
       /*
       // 카운트다운 UI 활성화 
       readyButton.gameObject.SetActive(false);
@@ -163,6 +165,7 @@ public class GameManager : MonoBehaviour
       // 플레이어 동작 
       //RunnerController.Runner.SpawnAsync(gameCanvas);
       //quizCanvas.SetActive(true);
+      PlayerControll.Instance.RpcSetNickname(LoginManager.Value);
       readyCanvas.SetActive(false);
       StartCoroutine(ProblemTimer.Instance.Timers()); //코루틴 실행하는 법
       Debug.Log("레디 끝남");

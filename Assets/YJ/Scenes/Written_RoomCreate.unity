@@ -2490,6 +2490,7 @@ MonoBehaviour:
   runnerPrefab: {fileID: 4565758226934524784, guid: 55a0f9da9f4690b4daba0095e235a31e, type: 3}
   roomNameInputField: {fileID: 839238876}
   participantsInputField: {fileID: 1855696832}
+  problemCountInputField: {fileID: 0}
 --- !u!4 &1302612675
 Transform:
   m_ObjectHideFlags: 0
@@ -2663,7 +2664,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_TargetDisplay: 0
 --- !u!224 &1322969232
 RectTransform:
@@ -4679,6 +4680,10 @@ PrefabInstance:
     - target: {fileID: 6424082359112103395, guid: 55bf1470e91a56048ba3ca19a6e783dd, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6539833716914876986, guid: 55bf1470e91a56048ba3ca19a6e783dd, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6820080119891058462, guid: 55bf1470e91a56048ba3ca19a6e783dd, type: 3}
       propertyPath: m_fontAsset
