@@ -2426,6 +2426,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2145352170}
   - component: {fileID: 2145352171}
+  - component: {fileID: 2145352172}
   m_Layer: 0
   m_Name: RankManager
   m_TagString: Untagged
@@ -2461,6 +2462,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rankPrefabs: {fileID: 4803854787603487820, guid: bc75956a971435e43a1e8599f01d38a9, type: 3}
+--- !u!114 &2145352172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145352169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 856320295
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 2145352171}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

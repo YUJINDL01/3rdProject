@@ -281,7 +281,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5759122731174107137}
-  - component: {fileID: 3704117139437565069}
+  - component: {fileID: 8493883378139772515}
   m_Layer: 5
   m_Name: Rank
   m_TagString: Untagged
@@ -312,7 +312,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &3704117139437565069
+--- !u!114 &8493883378139772515
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -321,14 +321,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4803854787603487820}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Script: {fileID: 11500000, guid: b7cd5a4c3911c2242af5afec481c145c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SortKey: 392609480
-  ObjectInterest: 1
-  Flags: 262145
-  NestedObjects: []
-  NetworkedBehaviours: []
+  posText: {fileID: 340520065884534378}
+  playerText: {fileID: 4764823606132770349}
+  scoreText: {fileID: 6082191909021366822}
 --- !u!1 &6025809633203700658
 GameObject:
   m_ObjectHideFlags: 0

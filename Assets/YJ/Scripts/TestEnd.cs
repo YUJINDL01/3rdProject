@@ -64,7 +64,7 @@ public class TestEnd : NetworkBehaviour
                 Runner.LoadScene(SceneRef.FromIndex(SceneUtility.GetBuildIndexByScenePath("Written_Result")));
                 yield return null;
                 //RankManager.Instance.Ranking(); // 안되면 순서 바꾸기
-                Debug.Log("랭킹이 소환");
+             
             }
         }
         else

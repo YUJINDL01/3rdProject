@@ -37,6 +37,7 @@ public class PlayerControll : NetworkBehaviour
     public void RpcSetNickname(string nickname)
     { 
         nicknameText.text = nickname; // 입력받은 닉네임을 ui에 설정 
+        RankManager.SetPlayerRank(Id, nickname);
         Debug.Log($"OnNicknameChanged: {nickname}");
     }
     
@@ -44,14 +45,8 @@ public class PlayerControll : NetworkBehaviour
     public void RpcScore(int currentScore)
     {
         scoreText.text = currentScore.ToString(); // 내거만 바뀌어야 하는데 공유가 안 됨
+        RankManager.SetPlayerRank(Id, "", currentScore);
         
         Debug.Log($"currentScore : {currentScore}");
     }
-    
-    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
-    public void RpcRankElement(string nickname, int score)
-    {
-        RankManager.Instance.AddPlayerRank(nickname, score); // 랭크 매니저에 추가
-    }
-
 }
