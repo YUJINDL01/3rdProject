@@ -6,23 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="294f6a5c-8b49-45bd-816b-9f85d433d539" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.3rdProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.3rdProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/JBY/Prefab/page/prefab/KOPUBWORLD_TTF_FONTS-1/desktop.ini.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/JBY/Prefab/page/prefab/KOPUBWORLD_TTF_FONTS-1/desktop.ini.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/JBY/scene/raodMap.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/JBY/scene/raodMap.unity.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MJ/Controller.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MJ/Controller.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MJ/Scene/Controller.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MJ/Scene/Controller.unity.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/YJ/Prefabs/SharedGameData.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Prefabs/SharedGameData.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scenes/Written_Result.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scenes/Written_Result.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/YJ/Scenes/Written_TEST.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scenes/Written_TEST.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/GameManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/GameManager.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/PlayerControll.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/PlayerControll.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/ProblemManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/ProblemManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/Problem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/Problem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/ProblemTimer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/ProblemTimer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/ScoreManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/ScoreManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/ScoreManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/ScoreManager.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/SharedGameData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/SharedGameData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/TestEnd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/TestEnd.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/YJ/TextMesh Pro/Resources/Fonts &amp; Materials/전기안전체 REGULAR SDF 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/TextMesh Pro/Resources/Fonts &amp; Materials/전기안전체 REGULAR SDF 1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +28,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/eaeed7563bb54141986573d11508bb3eb0800/c7/91c6ef24/IPlayerJoined.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/eaeed7563bb54141986573d11508bb3eb0800/d0/9f1e57b4/INetworkRunnerCallbacks.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/YJ/Scripts/NetworkProblemManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/YJ/Scripts/ResultManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -128,7 +121,8 @@
       <workItem from="1727064879181" duration="2583000" />
       <workItem from="1727152588222" duration="24367000" />
       <workItem from="1727185490342" duration="3083000" />
-      <workItem from="1727189609863" duration="9399000" />
+      <workItem from="1727189609863" duration="9609000" />
+      <workItem from="1727228068427" duration="33044000" />
     </task>
     <servers />
   </component>

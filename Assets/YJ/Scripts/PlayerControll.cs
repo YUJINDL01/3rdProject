@@ -7,8 +7,6 @@ public class PlayerControll : NetworkBehaviour
 {
     public TMP_Text nicknameText;
     public TMP_Text scoreText;
-
-    private bool _isKeyPressed;
     
     public static PlayerControll Instance;
 
@@ -21,6 +19,7 @@ public class PlayerControll : NetworkBehaviour
         if (HasStateAuthority) 
         {
             Instance = this;
+            DontDestroyOnLoad(this);
             
             //parent = GameObject.Find("Quiz/Players").transform;
             //transform.SetParent(parent);
@@ -48,16 +47,11 @@ public class PlayerControll : NetworkBehaviour
         
         Debug.Log($"currentScore : {currentScore}");
     }
-  
-    private void Update()
-    {
-        if (!HasStateAuthority)
-            return;
-        
-        if (Input.GetMouseButtonDown(0))
-        {
-            _isKeyPressed = true;
-        }
-    }
     
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    public void RpcRankElement(string nickname, int score)
+    {
+        RankManager.Instance.AddPlayerRank(nickname, score); // 랭크 매니저에 추가
+    }
+
 }

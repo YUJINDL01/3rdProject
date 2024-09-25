@@ -14,16 +14,21 @@ public class ScoreManager :NetworkBehaviour
     private List<int> clickedButton;
     private int score;
     public int currentScore;
+
+    public List<string> answerOX;
     
     private GameObject[] oxImage;
 
+    private List<int> playerScores;
    // public TMP_Text scoreTMP;
    
     public override void Spawned()
     {
         Instance = this;
+        answerOX.Clear();
         
         Init();
+        DontDestroyOnLoad(this);
     }
     
 
@@ -105,6 +110,7 @@ public class ScoreManager :NetworkBehaviour
     {
         oxImage[0].gameObject.SetActive(true);
         oxImage[1].gameObject.SetActive(false);
+        answerOX.Add("O");
 
     }
 
@@ -112,6 +118,7 @@ public class ScoreManager :NetworkBehaviour
     {
         oxImage[0].gameObject.SetActive(false);
         oxImage[1].gameObject.SetActive(true);
+        answerOX.Add("X");
     }
 
     public void OffOX()
@@ -119,4 +126,25 @@ public class ScoreManager :NetworkBehaviour
         oxImage[0].gameObject.SetActive(false);
         oxImage[1].gameObject.SetActive(false);
     }
+
+    /*
+    public void AddPlayerScore(int score)
+    {
+        playerScores.Add(score);
+    }
+
+    // 특정 플레이어의 점수를 반환하는 메서드
+    public int GetPlayerScore(int playerIndex)
+    {
+        if (playerIndex >= 0 && playerIndex < playerScores.Count)
+        {
+            return playerScores[playerIndex]; // 점수 반환
+        }
+        else
+        {
+            Debug.LogError("Invalid player index"); // 유효하지 않은 인덱스 오류
+            return 0; // 기본값 반환
+        }
+    }
+    */
 }

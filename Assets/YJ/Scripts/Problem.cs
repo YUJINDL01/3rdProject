@@ -24,7 +24,6 @@ public class Problem : ScriptableObject
    
 }
 
-
 public enum EProblemType
 {
     S1,

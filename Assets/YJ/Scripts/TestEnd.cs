@@ -1,17 +1,18 @@
 using System;
 using System.Collections;
+using Fusion;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class TestEnd : MonoBehaviour
+public class TestEnd : NetworkBehaviour
 {
     public Button endButton;
     //public Slider loadingBar;
     //public TMP_Text loadingText;
-    
+
     public GameObject scoremanager;
     private Score score;
 
@@ -20,9 +21,23 @@ public class TestEnd : MonoBehaviour
 
     public static TestEnd Instance;
 
-    private void Start()
+    //private static NetworkRunner Runner;
+
+    public override void Spawned()
     {
         Instance = this;
+        DontDestroyOnLoad(this);
+        /*
+        if (Runner == null) //러너가 아직 생성되지 않았다면
+        {
+            //runnerPrefab을 인스턴스화하여 새 네트워크 러너를 생성
+            var runnerGo = Instantiate(runnerPrefab);
+            Runner = runnerGo.GetComponentInChildren<NetworkRunner>();
+
+            var controller = Runner.GetComponent<RunnerController>();
+            controller.Init();
+        }
+        */
     }
 
     public void OnEnd()
@@ -32,33 +47,57 @@ public class TestEnd : MonoBehaviour
         //버튼 한번 누르면 인터랙팅 안 되게 하기 
         problemManager = problemManagerO.GetComponent<ProblemManager>();
         problemManager.MAnswerSheet();
-        
+
         score = scoremanager.GetComponent<Score>();
         score.Scoring();
-        
+
         StartCoroutine(TransitionNextScene());
     }
 
     private IEnumerator TransitionNextScene()
-    { 
-        Debug.Log("로딩 시작");
-        AsyncOperation ao = SceneManager.LoadSceneAsync("Written_Result"); 
-
-        ao.allowSceneActivation = false;
-
-        while (!ao.isDone)
+    {
+        if (Runner != null)
         {
-            float p = ao.progress / 0.9f;
-            //loadingBar.value = p;
-            //loadingText.text = $"{p * 100f}";
-
-            if (p >= 0.99999f)
+            if (Runner.IsSceneAuthority)
             {
-                ao.allowSceneActivation = true;
+                Debug.Log("네트워크 씬 바꾸는 중");
+                Runner.LoadScene(SceneRef.FromIndex(SceneUtility.GetBuildIndexByScenePath("Written_Result")));
+                yield return null;
+                //RankManager.Instance.Ranking(); // 안되면 순서 바꾸기
+                Debug.Log("랭킹이 소환");
             }
-            
-            yield return null;
         }
-        Debug.Log("로딩 끝");
+        else
+        {
+            Debug.Log("씬 바꿀려고 하는데 러너 없음!");
+        }
+
+        
+        /*
+        else
+        {
+            Debug.Log("로딩 시작");
+            AsyncOperation ao = SceneManager.LoadSceneAsync("Written_Result");
+
+            ao.allowSceneActivation = false;
+
+            while (!ao.isDone)
+            {
+                float p = ao.progress / 0.9f;
+                //loadingBar.value = p;
+                //loadingText.text = $"{p * 100f}";
+
+                if (p >= 0.99999f)
+                {
+                    ao.allowSceneActivation = true;
+                }
+
+                yield return null;
+            }
+            Debug.Log("로딩 끝");
+
+        }
+        */
+
     }
 }
