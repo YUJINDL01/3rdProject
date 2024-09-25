@@ -48,6 +48,12 @@ public class OnCollisionDetector : MonoBehaviour
             collisionText.text = "신호 위반 실격입니다";
             Invoke("ClearText", 3f);
         }
+        else if (other.gameObject.CompareTag("ParkingLine")) // 주차선 밟았을때 통과
+        {
+            Debug.Log("주차 확인");
+            collisionText.text = "확인 되었습니다.";
+            Invoke("ClearText", 3f);
+        }
         
       
         

@@ -7,14 +7,18 @@ public class TrafficLightManager : MonoBehaviour
    public GameObject yellowLight;
    public GameObject greenLight;
 
+   public Collider objectCollider;
+
    private void Start() // 반복되며 실행되도록
    {
       //  초기 상태 설정: 빨간불 켜기
       SetRedLight();
       StartCoroutine(TrafficLightManagerCycle());
+      objectCollider = GetComponent<Collider>(); // 컴퍼넌트 가져와
+
    }
 
-   private void SetRedLight()  // 빨간불 설정
+   private void SetRedLight() // 빨간불 설정
    {
       redLight.SetActive(true);
       yellowLight.SetActive(false);
@@ -40,15 +44,20 @@ public class TrafficLightManager : MonoBehaviour
       while (true)
       {
          yield return new WaitForSeconds(4f); // 빨간불 4초
-         SetYellowLight();
-         yield return new WaitForSeconds(3f); // 노란불 3초
+         objectCollider.enabled = false;
+
          SetGreenLight();
          yield return new WaitForSeconds(5f); // 초록불 5초
+
+         SetYellowLight();
+         yield return new WaitForSeconds(3f); // 노란불 3초
+
          SetRedLight();
+         objectCollider.enabled = true;
       }
+
+
+
+
    }
-   
-   
-   
-   
 }

@@ -18,6 +18,7 @@ TagManager:
   - YellowLine
   - ParkSensor
   - RedLine
+  - ParkingLine
   layers:
   - Default
   - TransparentFX
