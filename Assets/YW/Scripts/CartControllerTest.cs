@@ -78,6 +78,8 @@ public class CartControllerTest : MonoBehaviour
         AccelPedal,
         WaitBreakPedal,
         BreakPedal,
+        
+        Complete
     }
 
     public enum FourState
@@ -175,6 +177,7 @@ public class CartControllerTest : MonoBehaviour
     public State state = State.WaitSeatBelt; // 이 값을 가지고 시작하게 변수 지정
     public FourState fourState1 = FourState.NoSelect;  // 이 값을 가지고 시작하게 변수 지정 
     public FourState fourState2 = FourState.NoSelect;  // 이 값을 가지고 시작하게 변수 지정 
+    
 
     private Coroutine timerCoroutine;
 
@@ -338,6 +341,7 @@ public class CartControllerTest : MonoBehaviour
             audioSource2.Play();
         }
 
+        /*
         yield return StartCoroutine(PlaySoundProcess(randomSoundGo, false)); // 시동 1번 소리 기다리고 끝나면 바로 재생되게 
       
 
@@ -346,11 +350,10 @@ public class CartControllerTest : MonoBehaviour
         // int i = Random.Range(1, 5); // 5는 빼고 1234 중에 하나 추출
         fourState1 = (FourState)Random.Range(1, 5); // int 형 i를 fourState 타입으로 변환 //FourState.Wiper 이런 식으로 테스트 해 볼 거 입력
         
-        
         // 두 번째 뽑는 건 중복 안 돼야 돼서 반복문과 조건문이 필요
         for (int limit = 100; limit > 0; limit--) // 이건 그냥 100번 반복해라 뭐 100번 인엔 나오겠지
         {
-            fourState2 = FourState.Wiper; //(FourState)Random.Range(1, 5);
+            fourState2 = (FourState)Random.Range(1, 5);
             if (fourState2 != fourState1)  // 만약에 뽑은 값이 중복되면 다시 뽑기 즉 진짜 조건문 뽑아라~~~  
             {
                 break;
@@ -392,13 +395,15 @@ public class CartControllerTest : MonoBehaviour
         yield return StartCoroutine(PlaySoundProcess(startSoundGo, false));
         yield return StartCoroutine(PlaySoundProcess(bbiSound, false));
 
+        StartCoroutine(TimerTextCoroutine(10f, -5, () => state == State.Start));
+    */    
+        state = State.WaitSideBreak;
+        yield return new WaitUntil(() => state == State.SideBreak);
         state = State.WaitStart;
-        yield return StartCoroutine(TimerTextCoroutine(10f, -5, () => state == State.Start));
-        
-        
+        yield return new WaitUntil(() => state == State.Start);
 
         Debug.Log("기능 조작 시험 끝");
-
+        state = State.Complete;
     }
     
     
@@ -584,18 +589,12 @@ public class CartControllerTest : MonoBehaviour
     public NewCarControl newCarControl;  // 차 움직이는 스크립트 가져오기
     public void SideBraeak()
     {
-        
-            PlaySound(sideBreakSound, false);
+        PlaySound(sideBreakSound, false);
         //sidebreak true false 바꿔놓아서 시작할 때 끈 채로 시작하고
         if (sideBreakLock == true) // 락이 걸려 있는 상태 즉 멈춰있는 상태 즉 스크립트를 켜야 됨
         {
-            sideBreakLock = false;
-            newCarControl.enabled = true;
-
-        }
-        else                                      // 얘를 실행하면? 멈추는 걸 안 해야 됨 즉 누르면 차량 움직이는 스크립트를 꺼야 됨
-        {
-            if (state != State.WaitSideBreak)
+            
+            if (state != State.WaitSideBreak && state != State.Complete) // 완료 상태가 되면 감점 체크를 안 하도록
             {
                 MinusScoreCount(-5);
                 PlaySound(minusSoundGo, false);
@@ -603,11 +602,19 @@ public class CartControllerTest : MonoBehaviour
                 return;
             }
 
-            sideBreakLock = true;
-            
-            Debug.Log("사이드");
-            state = State.SideBreak;
+            if (state == State.WaitSideBreak)
+            {
+                Debug.Log("사이드");
+                state = State.SideBreak;
+            }
 
+            sideBreakLock = false;  // 락 걸렸을 때 푸는 게 이거 => 사이드를 푸는 거
+            newCarControl.enabled = true;
+
+        }
+        else // 얘를 실행하면? 멈추는 걸 안 해야 됨 즉 누르면 차량 움직이는 스크립트를 꺼야 됨
+        {
+            sideBreakLock = true; // 락 걸렸을 때 거는 게 이거면 => 사이드를 잠그는 거
             newCarControl.enabled = false;
         }
         
@@ -615,7 +622,7 @@ public class CartControllerTest : MonoBehaviour
 
     public void SeatBelt()
     {
-        if (state != State.WaitSeatBelt) // 안전벨트 할 상황이 아닐 때
+        if (state != State.WaitSeatBelt && state != State.Complete) // 안전벨트 할 상황이 아닐 때
         {
             MinusScoreCount(-5);
             PlaySound(minusSoundGo, false);
@@ -624,9 +631,12 @@ public class CartControllerTest : MonoBehaviour
             return; // 안전벨트 매고 잇으면 그냥 종료
         }
 
-        Debug.Log("안전벨트");
-        state = State.SeatBelt;
-        
+        if (state == State.WaitSeatBelt)
+        {
+            Debug.Log("안전벨트");
+            state = State.SeatBelt;
+        }
+
         seatBeltImage.gameObject.SetActive(true);
         Invoke("HideImage", 1.5f);
 
@@ -635,16 +645,20 @@ public class CartControllerTest : MonoBehaviour
 
     public void Warning()
     {
-        if (state != State.WaitWarning)
+        if (state != State.WaitWarning && state != State.Complete)
         {
             MinusScoreCount(-5);
             PlaySound(minusSoundGo, false);
             Debug.Log("비깜 상태가 아님");
             return;
         }
-        
-        Debug.Log("비깜");
-        state = State.Warning;
+
+        if (state == State.WaitWarning)
+        {
+            Debug.Log("비깜");
+            state = State.Warning;
+        }
+
         PlaySound(signalSound, true);
     }
 
@@ -660,21 +674,29 @@ public class CartControllerTest : MonoBehaviour
             //     return;
             // }
 
-            state = State.OffDownLight;
+            if (state == State.WaitOffHeadLight)
+            {
+                state = State.OffDownLight;
+            }
+
             downLightImage.gameObject.SetActive(false);
         }
         else
         {
             
-            if (state != State.WaitHeadLight)
+            if (state != State.WaitHeadLight && state != State.Complete)
             {
                 MinusScoreCount(-5);
                 PlaySound(minusSoundGo, false);
                 Debug.Log("전조등 켤 상태가 아님");
                 return;
             }
-            
-            state = State.HeadLight;
+
+            if (state == State.WaitOffHeadLight)
+            {
+                state = State.HeadLight;
+            }
+
             downLightImage.gameObject.SetActive(true);
            
         }
@@ -687,7 +709,7 @@ public class CartControllerTest : MonoBehaviour
 
         if (downLightImage.gameObject.activeSelf)
         {
-            if (state != State.WaitOffDownLight)
+            if (state != State.WaitOffDownLight && state != State.Complete)
             {
                 MinusScoreCount(-5);
                 PlaySound(minusSoundGo, false);
@@ -695,7 +717,11 @@ public class CartControllerTest : MonoBehaviour
                 return;
             }
 
-            state = State.OffDownLight;
+            if (state == State.WaitOffDownLight)
+            {
+                state = State.OffDownLight;
+            }
+
             downLightImage.gameObject.SetActive(false);
         }
         else
@@ -706,7 +732,11 @@ public class CartControllerTest : MonoBehaviour
                 return;
             }
 
-            state = State.DownLight;
+            if (state == State.WaitOffDownLight)
+            {
+                state = State.DownLight;
+            }
+
             downLightImage.gameObject.SetActive(true);
             upLightImage.gameObject.SetActive(false);
         }
@@ -726,18 +756,22 @@ public class CartControllerTest : MonoBehaviour
                 Debug.Log("상향등 켤 타임 아님");
                 return;
             }*/
-            MinusScoreCount(-5);
-            PlaySound(minusSoundGo, false);
+            // MinusScoreCount(-5);
+            // PlaySound(minusSoundGo, false);
             upLightImage.SetActive(false);
         }
         else
         {
-            if (state != State.WaitUpLight)
+            /*if (state != State.WaitUpLight)
             {
                 Debug.Log("상황등");
+            }*/
+
+            if (state == State.WaitOffUpLight)
+            {
+                state = State.UpLight;
             }
-            
-            state = State.UpLight;
+
             upLightImage.gameObject.SetActive(true);
             downLightImage.gameObject.SetActive(false);
         }
@@ -752,23 +786,28 @@ public class CartControllerTest : MonoBehaviour
             signalLeft = false;
             audioSource3.Stop();
 
-            state = State.OffLeftSignal;
-
+            if (state == State.WaitOffLeftSignal)
+            {
+                state = State.OffLeftSignal;
+            }
         }
         
         else
         {
             
-            if (state != State.WaitLeftSignal)  /// 꺼진 상태에서 실행되는 코드를 짠 거니까 꺼져있을 때 트루가 돼서 작동되는 코드를 써야 됨 반대로 켜진 상태 즉 트루일 땐 그걸 끄는 코드
+            if (state != State.WaitLeftSignal && state != State.Complete)  /// 꺼진 상태에서 실행되는 코드를 짠 거니까 꺼져있을 때 트루가 돼서 작동되는 코드를 써야 됨 반대로 켜진 상태 즉 트루일 땐 그걸 끄는 코드
             {
                 MinusScoreCount(-5);
                 PlaySound(minusSoundGo, false);
                 Debug.Log("좌깜 켤 타임 아님");
                 return;
             }
-            
-            state = State.LeftSignal;
-            
+
+            if (state == State.WaitOffLeftSignal)
+            {
+                state = State.LeftSignal;
+            }
+
             Debug.Log("좌깜");
             signalLeft = true;
             
@@ -786,12 +825,15 @@ public class CartControllerTest : MonoBehaviour
             signalRight = false;
             audioSource3.Stop();
 
-            state = State.OffRightSignal;
+            if (state == State.WaitOffRightSignal)
+            {
+                state = State.OffRightSignal;
+            }
 
         }
         else
         {
-            if (state != State.WaitRightSignal)
+            if (state != State.WaitRightSignal && state != State.Complete)
             {
                 MinusScoreCount(-5);
                 PlaySound(minusSoundGo, false);
@@ -802,7 +844,11 @@ public class CartControllerTest : MonoBehaviour
             signalRight = true;
             
             Debug.Log("우깜");
-            state = State.RightSignal;
+            if (state == State.WaitOffRightSignal)
+            {
+                state = State.RightSignal;
+            }
+
             audioSource3.clip = signalSound;
             audioSource3.loop = true;
             audioSource3.Play();
@@ -824,7 +870,7 @@ public class CartControllerTest : MonoBehaviour
         }
         else
         {
-            if (state != State.WaitReady)
+            if (state != State.WaitReady && state != State.Complete) 
             {
                 MinusScoreCount(-5);
                 PlaySound(minusSoundGo, false);
@@ -834,7 +880,10 @@ public class CartControllerTest : MonoBehaviour
             
             isReady2 = true;
             Debug.Log("시동");
-            state = State.Ready;
+            if (state == State.WaitReady)
+            {
+                state = State.Ready;
+            }
         }
     }
 
@@ -843,7 +892,7 @@ public class CartControllerTest : MonoBehaviour
         bool isIdleState = wiperAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle");
         if (isIdleState)
         {
-            if (state != State.WaitWiper)
+            if (state != State.WaitWiper && state != State.Complete)
             {
                 MinusScoreCount(-5);
                 PlaySound(minusSoundGo, false);
@@ -852,14 +901,17 @@ public class CartControllerTest : MonoBehaviour
             }
             
             Debug.Log("와이퍼 켬");
-            state = State.Wiper;
+            if (state == State.WaitWiper)
+            {
+                state = State.Wiper;
+            }
 
             wiperAnimator.SetTrigger("ToMove");
             wiperAnimator2.SetTrigger("ToMove");
         }
         else
         {
-            if (state != State.WaitOffWiper)
+            if (state != State.WaitOffWiper && state != State.Complete)
             {
                 MinusScoreCount(-5);
                 PlaySound(minusSoundGo, false);
@@ -868,7 +920,10 @@ public class CartControllerTest : MonoBehaviour
             }
             
             Debug.Log("와이퍼 끔");
-            state = State.OffWiper;
+            if (state == State.WaitOffWiper)
+            {
+                state = State.OffWiper;
+            }
 
             wiperAnimator.SetTrigger("ToIdle");
             wiperAnimator2.SetTrigger("ToIdle");
@@ -878,7 +933,9 @@ public class CartControllerTest : MonoBehaviour
 
     public void P()
     {
-        if (state != State.WaitP)
+        newCarControl.MoveStop();
+        
+        if (state != State.WaitP && state != State.Complete)
         {
             MinusScoreCount(-5);
             PlaySound(minusSoundGo, false);
@@ -887,14 +944,19 @@ public class CartControllerTest : MonoBehaviour
         }
         
         Debug.Log("P");
-        state = State.P;
-        
+        if (state == State.WaitP)
+        {
+            state = State.P;
+        }
+
         PlaySound(headLightSound, false);
     }
     
     public void R()
     {
-        if (state != State.WaitR)
+        newCarControl.MoveBackward();
+        
+        if (state != State.WaitR && state != State.Complete)
         {
             MinusScoreCount(-5);
             PlaySound(minusSoundGo, false);
@@ -903,14 +965,19 @@ public class CartControllerTest : MonoBehaviour
         }
         
         Debug.Log("R");
-        state = State.R;
-            
+        if (state == State.WaitR)
+        {
+            state = State.R;
+        }
+
         PlaySound(headLightSound, false);
     }
     
     public void N()
     {
-        if (state != State.WaitN)
+        newCarControl.MoveStop();
+        
+        if (state != State.WaitN && state != State.Complete)
         {
             MinusScoreCount(-5);
             PlaySound(minusSoundGo, false);
@@ -919,20 +986,25 @@ public class CartControllerTest : MonoBehaviour
         }
         
         Debug.Log("N");
-        state = State.N;
-        
+        if (state == State.WaitN)
+        {
+            state = State.N;
+        }
+
         PlaySound(headLightSound, false);
     }
     
     public void D()
     {
+        newCarControl.MoveForward();
+        
         if (state == State.WaitStart)  // waitStart일 때 Start로 상태를 바꿔줌
         {
             state = State.Start;
             return;
         }
      
-        if (state != State.WaitD)
+        if (state != State.WaitD && state != State.Complete)
         {
             MinusScoreCount(-5);
             PlaySound(minusSoundGo, false);
@@ -941,8 +1013,12 @@ public class CartControllerTest : MonoBehaviour
         }
    
         Debug.Log("D");
-        state = State.D;
-        StartCoroutine(GearTest());
+        if (state == State.WaitD)
+        {
+            state = State.D;
+            StartCoroutine(GearTest());
+        }
+
         
         PlaySound(headLightSound, false);
     }
