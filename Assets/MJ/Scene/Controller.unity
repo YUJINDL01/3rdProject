@@ -530,7 +530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 662863ea6fe388d4e821aefac3b898d7, type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: 65abbd5740278544ea6c309b2ad1d9bf, type: 3}
   m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -544,261 +544,69 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1448484787}
-        m_TargetAssemblyTypeName: Controller, Assembly-CSharp
-        m_MethodName: LeftBlinker
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: be29287b-d552-44c7-a259-63ebd0984b19
-    m_ActionName: 'Controll/Left blinker[/Logitech G29 Driving Force Racing Wheel/button12]'
+    m_ActionName: Controll/Left blinker
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1448484787}
-        m_TargetAssemblyTypeName: Controller, Assembly-CSharp
-        m_MethodName: RightBlinker
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 43279685-0269-4f96-83b0-ea2586add0d5
-    m_ActionName: 'Controll/Right blinker[/Logitech G29 Driving Force Racing Wheel/button8]'
+    m_ActionName: Controll/Right blinker
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1448484787}
-        m_TargetAssemblyTypeName: Controller, Assembly-CSharp
-        m_MethodName: Wifer
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 471e6bf7-a89f-4724-a39e-6a18bf6071ef
-    m_ActionName: 'Controll/Wifer[/Logitech G29 Driving Force Racing Wheel/button7]'
+    m_ActionName: Controll/Wifer
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1448484787}
-        m_TargetAssemblyTypeName: Controller, Assembly-CSharp
-        m_MethodName: Key
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: e6abd646-64f9-4d76-b6ad-43277963ead8
-    m_ActionName: 'Controll/Key[/Logitech G29 Driving Force Racing Wheel/button11]'
+    m_ActionName: Controll/Key
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1448484787}
-        m_TargetAssemblyTypeName: Controller, Assembly-CSharp
-        m_MethodName: EmerygencyLight
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: f2ac5bd8-ffc0-4588-85d5-46b06269a033
-    m_ActionName: 'Controll/Emergency lights[/Logitech G29 Driving Force Racing Wheel/button24]'
+    m_ActionName: Controll/Emergency lights
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1448484787}
-        m_TargetAssemblyTypeName: Controller, Assembly-CSharp
-        m_MethodName: Headlight
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 197b2d64-0379-41bf-b14e-17942b5fdf09
-    m_ActionName: 'Controll/Headlight[/Logitech G29 Driving Force Racing Wheel/button4]'
+    m_ActionName: Controll/Headlight
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1448484787}
-        m_TargetAssemblyTypeName: Controller, Assembly-CSharp
-        m_MethodName: LowBeam
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 5cfd8adf-c86f-4af3-9b5e-e70fc14ae863
-    m_ActionName: 'Controll/Low beam[/Logitech G29 Driving Force Racing Wheel/button6]'
+    m_ActionName: Controll/Low beam
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1448484787}
-        m_TargetAssemblyTypeName: Controller, Assembly-CSharp
-        m_MethodName: HighBeam
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 25027725-24cd-4003-93a7-47fe91790645
-    m_ActionName: 'Controll/High beam[/Logitech G29 Driving Force Racing Wheel/button5]'
+    m_ActionName: Controll/High beam
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1448484787}
-        m_TargetAssemblyTypeName: Controller, Assembly-CSharp
-        m_MethodName: P
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 5e5fdb7a-3456-4412-8250-97f31560fd05
-    m_ActionName: 'Controll/P[/Logitech G29 Driving Force Racing Wheel/button4]'
+    m_ActionName: Controll/P
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1448484787}
-        m_TargetAssemblyTypeName: Controller, Assembly-CSharp
-        m_MethodName: R
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 19f1cd8d-e030-4410-ba78-0ae203052099
-    m_ActionName: 'Controll/R[/Logitech G29 Driving Force Racing Wheel/button2]'
+    m_ActionName: Controll/R
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1448484787}
-        m_TargetAssemblyTypeName: Controller, Assembly-CSharp
-        m_MethodName: N
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: e95230ab-79f1-4684-9e4c-ac1d56d0df07
-    m_ActionName: 'Controll/N[/Logitech G29 Driving Force Racing Wheel/trigger]'
+    m_ActionName: Controll/N
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1448484787}
-        m_TargetAssemblyTypeName: Controller, Assembly-CSharp
-        m_MethodName: D
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 62ff0349-41f9-42fc-8d85-3659cc714ec4
-    m_ActionName: 'Controll/D[/Logitech G29 Driving Force Racing Wheel/button3]'
+    m_ActionName: Controll/D
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1448484787}
-        m_TargetAssemblyTypeName: Controller, Assembly-CSharp
-        m_MethodName: Axel
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 9305b53c-1a4e-4db7-a02c-83c42fb7b07b
-    m_ActionName: 'Controll/Axel[/Logitech G29 Driving Force Racing Wheel/stick/y]'
+    m_ActionName: Controll/Axel
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1448484787}
-        m_TargetAssemblyTypeName: Controller, Assembly-CSharp
-        m_MethodName: SideBreak
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 21857c5b-8af2-4d4d-b081-c9157f537f15
-    m_ActionName: 'Controll/Side break[/Logitech G29 Driving Force Racing Wheel/rz]'
+    m_ActionName: Controll/Side break
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1448484787}
-        m_TargetAssemblyTypeName: Controller, Assembly-CSharp
-        m_MethodName: Break
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 7f6095e4-e5e1-4384-bf8b-c709790806f0
-    m_ActionName: 'Controll/Break[/Logitech G29 Driving Force Racing Wheel/z]'
+    m_ActionName: Controll/Break
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1448484787}
-        m_TargetAssemblyTypeName: Controller, Assembly-CSharp
-        m_MethodName: Handle
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: e5a6cfc5-9f33-41f5-ae37-2a048723ff59
-    m_ActionName: 'Controll/Move[/Logitech G29 Driving Force Racing Wheel/stick/x]'
+    m_ActionName: Controll/Move
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Controll
