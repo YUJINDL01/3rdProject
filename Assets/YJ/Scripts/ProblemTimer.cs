@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Fusion;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -49,10 +50,25 @@ public class ProblemTimer : MonoBehaviour
     void TimeDone()
     {
         timeOver++;
-        
+
         if (timeOver == 5)
         {
-            TestEnd.Instance.OnEnd();   
+            ResultManager.Instance.AnswerOXSave(); // 정담 여부랑 답안지 만들기 위함
+            
+            if (TestEnd.Instance != null)
+            {
+
+                Debug.Log("네트워크씬 바꾼다");
+                TestEnd.Instance.OnEnd();
+                //networkSccenManager.OnEnd();   
+                //NetworkBehaviour networkSccenManager = sceneManager.GetComponent<NetworkBehaviour>();
+
+                Debug.Log("바꾸기로 함");
+            }
+            else
+            {
+                Debug.Log("테스트 엔드 이상함!!");
+            }
         }
         
         ProblemManager.Instance.MMButton(+1);

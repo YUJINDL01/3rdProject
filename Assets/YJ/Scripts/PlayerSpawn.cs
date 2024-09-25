@@ -32,12 +32,12 @@ public class PlayerSpawn : SimulationBehaviour, IPlayerJoined
        parentObject = GameObject.Find("Players");
        parentTransform = parentObject.transform.position;
        
-       Debug.Log("@@@: 플레이서 스폰 할라고");
+       Debug.Log("플레이서 스폰 할라고");
        
        if (player == Runner.LocalPlayer)
        {
            // 플레이어가 생성되어 있으면 안되게 하기 
-           Debug.Log("@@@: 플레이어 스폰");
+           Debug.Log("플레이어 스폰");
            var playerOp = Runner.Spawn(playerPrefab, parentTransform, Quaternion.identity);
            //playerOp.transform.SetParent(parentObject.transform);
            //PlayerControll.Instance.RpcSetNickname(LoginManager.Value);
