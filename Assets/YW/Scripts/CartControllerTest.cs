@@ -126,7 +126,6 @@ public class CartControllerTest : MonoBehaviour
     
 
     public GameObject seatBeltImage;
-    public GameObject wiperImage;
     public GameObject upLightImage;
     public GameObject downLightImage;
 
@@ -205,26 +204,31 @@ public class CartControllerTest : MonoBehaviour
              TestOut(); // 실격 처리
          }
      }
-     
-
-     public void MinusScoreTextUI()
-     {
-         scoreText.text = "점수: " + score; // UI 텍스트 업데이트
-     }
 
      private void TestOut()
      {
+         audioSource.enabled = false;
+         audioSource2.enabled = false;
+         audioSource3.enabled = false;
+         seatBeltHeper.enabled = false;
+         timerText.enabled = false;
+         penaltyText.enabled = false;
+         
+
+         seatBeltImage.SetActive(false);
+         upLightImage.SetActive(false);
+         downLightImage.SetActive(false);
+         
          outText.text = "기준 점수 미달, 실격입니다.";
+         outText.gameObject.SetActive(true);
+
          audioSource4.clip = outSoundGo;
          audioSource4.loop = false;
          audioSource4.Play();
-         
-         outText.gameObject.SetActive(true);
-         Debug.Log("실격입니다.");
-         
-         Invoke("GoFailScene", 3f);
 
-         
+         Debug.Log("실격입니다.");
+
+         Invoke("GoFailScene", 3f);
      }
 
      private void GoFailScene()
@@ -943,7 +947,7 @@ public class CartControllerTest : MonoBehaviour
         PlaySound(headLightSound, false);
     }
 
-    #region Internal
+    #region PlayAndStop
 
     private void HideImage() // 사진 사라지게 하는 코드
     {
