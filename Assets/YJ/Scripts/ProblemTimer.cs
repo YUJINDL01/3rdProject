@@ -3,8 +3,6 @@ using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
-using WebSocketSharp;
-
 public class ProblemTimer : MonoBehaviour
 {
     public TMP_Text timer;
@@ -32,35 +30,24 @@ public class ProblemTimer : MonoBehaviour
 
         while (currentTime > 0)
         {
-            timer.text = $"{00:00}:{currentTime:00}";
             yield return new WaitForSecondsRealtime(1f);
             currentTime--;
 
-            if (currentTime <= 3) // 변수 긴급시간으로 변경 
+            if (currentTime <= 3)
             {
                 timer.color = _iColor;
             }
 
-           // timer.text = $"{00:00}:{currentTime:00}";
-        }
-
-        if (currentTime == 0) // 각 문제가 끝나는 이벤트에 매소드 등록하는 방식으로 변경
-        {
-            timer.text = String.Empty;
+            timer.text = $"{00:00}:{currentTime:00}";
         }
 
         yield return null;
         
-        StartCoroutine(TimeDone());
+        TimeDone();
     }
 
-    private IEnumerator TimeDone()
+    void TimeDone()
     {
-        ScoreManager.Instance.AnswerCheck(timeOver);
-        //ProblemManager.Instance.MAnswerSheet();
-        yield return new WaitForSecondsRealtime(1f);
-        ScoreManager.Instance.OffOX();
-        
         timeOver++;
         
         if (timeOver == 5)

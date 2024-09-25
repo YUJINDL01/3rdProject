@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/JBY/Prefab/page/prefab/UI.psd.meta
 guid: d922d1402d3ec7c45b8019078f87c78e
+========
+guid: ecc18d02a2c10af469c18c6e0ba17569
+>>>>>>>> CYW:Assets/JBY/Prefab/page/prefab/page/background/Artboard 1.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/MJ/Scene/Controller.unity.meta
 guid: 0456683197dcabe47b9cf0fca9cb7436
+========
+guid: 120ccaa558190d94788028c89838a0f0
+folderAsset: yes
+>>>>>>>> CYW:Assets/JBY/Material/car.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
