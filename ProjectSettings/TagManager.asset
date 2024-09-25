@@ -15,6 +15,9 @@ TagManager:
   - HeadLight
   - Warning
   - Stone
+  - YellowLine
+  - ParkSensor
+  - RedLine
   layers:
   - Default
   - TransparentFX
