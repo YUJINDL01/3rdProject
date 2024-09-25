@@ -1,0 +1,85 @@
+{
+    "name": "Controll",
+    "maps": [
+        {
+            "name": "1",
+            "id": "490549b3-86f4-46a0-a74e-f7790d34d314",
+            "actions": [
+                {
+                    "name": "Up",
+                    "type": "Button",
+                    "id": "ac3ff089-50d8-4515-89e7-01d401815c54",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RightBack",
+                    "type": "Button",
+                    "id": "b6996084-fe06-4a9d-ab8e-2c1417c0a36d",
+                    "expectedControlType": "",
+                    "processors": "AxisDeadzone",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RightPedal",
+                    "type": "Value",
+                    "id": "18caf832-842f-45ca-bddd-5b969823342d",
+                    "expectedControlType": "",
+                    "processors": "StickDeadzone",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "012dc016-fa8b-4afa-9c9d-74100861ca0d",
+                    "path": "<XRController>{RightHand}/{Forward}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Up",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "952f86a9-f4d4-4444-87a7-fefb4eac1b0c",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Up",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bee094ef-7c6d-46ce-818c-e4403544b72e",
+                    "path": "<XInputController>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightBack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9e454c62-cfc3-4145-9a5d-1602d2b64ccb",
+                    "path": "<XInputController>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightPedal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

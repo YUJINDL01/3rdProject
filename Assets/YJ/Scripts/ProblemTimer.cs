@@ -13,6 +13,7 @@ public class ProblemTimer : MonoBehaviour
 
     private Color _originColor = new Color(50f / 255f, 187f / 255f, 108f/255f, 255f / 255f);
     private Color _iColor = Color.red;
+    private int timeOver = 0;
 
     private void Awake()
     {
@@ -23,7 +24,7 @@ public class ProblemTimer : MonoBehaviour
     public IEnumerator Timers()
     {
         Debug.Log("타이머 시작");
-        timerSec = 16; 
+        timerSec = 10; 
         int currentTime = timerSec;
         timer.color = _originColor;
 
@@ -32,7 +33,7 @@ public class ProblemTimer : MonoBehaviour
             yield return new WaitForSecondsRealtime(1f);
             currentTime--;
 
-            if (currentTime <= 5)
+            if (currentTime <= 3)
             {
                 timer.color = _iColor;
             }
@@ -47,7 +48,15 @@ public class ProblemTimer : MonoBehaviour
 
     void TimeDone()
     {
+        timeOver++;
+        
+        if (timeOver == 5)
+        {
+            TestEnd.Instance.OnEnd();   
+        }
+        
         ProblemManager.Instance.MMButton(+1);
+
 
         StartCoroutine(Timers());
     }

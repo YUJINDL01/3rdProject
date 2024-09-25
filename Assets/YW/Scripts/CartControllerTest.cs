@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using NUnit.Framework.Interfaces;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
@@ -109,10 +111,15 @@ public class CartControllerTest : MonoBehaviour
     // 타이머 5초 동안 뜨고 5초 안에 안 하면 감점
     // 처음 시작 음성 듣고 안전벨트 말고 다른 거 누르면 바로 실격
     // 시작할 때 사이드 당겨져 있고 나중에 누르면 풀어지는 기능으로 돼야 함
-    
+
+    public TMP_Text seatBeltHeper;
     public TMP_Text timerText;
     public TMP_Text penaltyText;
+    public TMP_Text scoreText;
+    public TMP_Text outText;
 
+    public int score = 100;
+    
     public float timer = 5.0f;
     private bool timerActive = false;
     
@@ -131,6 +138,7 @@ public class CartControllerTest : MonoBehaviour
     public AudioSource audioSource;
     public AudioSource audioSource2;
     public AudioSource audioSource3;
+    public AudioSource audioSource4;
 
     public AudioClip bbiSound;
     
@@ -186,6 +194,48 @@ public class CartControllerTest : MonoBehaviour
      /// </summary>
 
 
+     public void MinusScoreCount(int amount)
+     {
+         score += amount; // 매개변수로 -5 하고 있으니까
+         scoreText.text = "점수: " + score;
+         Debug.Log("현재 점수"+score);
+
+         if (score < 80)
+         {
+             TestOut(); // 실격 처리
+         }
+     }
+     
+
+     public void MinusScoreTextUI()
+     {
+         scoreText.text = "점수: " + score; // UI 텍스트 업데이트
+     }
+
+     private void TestOut()
+     {
+         outText.text = "기준 점수 미달, 실격입니다.";
+         audioSource4.clip = outSoundGo;
+         audioSource4.loop = false;
+         audioSource4.Play();
+         
+         outText.gameObject.SetActive(true);
+         Debug.Log("실격입니다.");
+         
+         Invoke("GoFailScene", 3f);
+
+         
+     }
+
+     private void GoFailScene()
+     {
+         SceneManager.LoadScene("Fail"); // 불합격씬
+     }
+         
+
+     
+
+
      #region Timer
 
 
@@ -219,9 +269,12 @@ public class CartControllerTest : MonoBehaviour
                  ///// 스코어 감소 minusScore;
                  timerText.gameObject.SetActive(false);
                  penaltyText.text = $"제한시간 내 지시사항 불이행 감점입니다. \n {minusScore}"; // 실행한 마이너스스코어가 들어감
+                 PlaySound(minusSoundGo, false);
                  penaltyText.gameObject.SetActive(true); // 타이머 종료 후 감점 메시지 표시
                  yield return new WaitForSeconds(2f);
                  penaltyText.gameObject.SetActive(false); // 타이머 종료 후 감점 메시지 표시
+
+                 MinusScoreCount(minusScore);
 
                  break;
              }
@@ -252,6 +305,7 @@ public class CartControllerTest : MonoBehaviour
     IEnumerator SeatBeltSoundCorutine() // 시동 켜라 음성 재생하기
     {
         yield return StartCoroutine(PlaySoundProcess(seatBeltSound, false)); // 달칵 소리 재생
+        seatBeltHeper.gameObject.SetActive(false);
         yield return StartCoroutine(PlaySoundProcess(readySoundGo, false)); // 시동 켜라 음성 재생
         yield return StartCoroutine(PlaySoundProcess(bbiSound, false));
 
@@ -286,13 +340,13 @@ public class CartControllerTest : MonoBehaviour
         // 4 of 2 선택하기
         // 1, 2, 3, 4
         // int i = Random.Range(1, 5); // 5는 빼고 1234 중에 하나 추출
-        fourState1 = FourState.Wiper; //(FourState)Random.Range(1, 5); // int 형 i를 fourState 타입으로 변환
+        fourState1 = (FourState)Random.Range(1, 5); // int 형 i를 fourState 타입으로 변환 //FourState.Wiper 이런 식으로 테스트 해 볼 거 입력
         
         
         // 두 번째 뽑는 건 중복 안 돼야 돼서 반복문과 조건문이 필요
         for (int limit = 100; limit > 0; limit--) // 이건 그냥 100번 반복해라 뭐 100번 인엔 나오겠지
         {
-            fourState2 = (FourState)Random.Range(1, 5);
+            fourState2 = FourState.Wiper; //(FourState)Random.Range(1, 5);
             if (fourState2 != fourState1)  // 만약에 뽑은 값이 중복되면 다시 뽑기 즉 진짜 조건문 뽑아라~~~  
             {
                 break;
@@ -539,6 +593,8 @@ public class CartControllerTest : MonoBehaviour
         {
             if (state != State.WaitSideBreak)
             {
+                MinusScoreCount(-5);
+                PlaySound(minusSoundGo, false);
                 Debug.Log("사이드브레이크 할 때가 아님");
                 return;
             }
@@ -557,6 +613,8 @@ public class CartControllerTest : MonoBehaviour
     {
         if (state != State.WaitSeatBelt) // 안전벨트 할 상황이 아닐 때
         {
+            MinusScoreCount(-5);
+            PlaySound(minusSoundGo, false);
             Debug.Log("안전벨트 할 때가 아님"); // 다른 상태일 때 안전벨트 누르면 안전벨트 할 상황 아니라고 하는 거임
             // 
             return; // 안전벨트 매고 잇으면 그냥 종료
@@ -575,6 +633,8 @@ public class CartControllerTest : MonoBehaviour
     {
         if (state != State.WaitWarning)
         {
+            MinusScoreCount(-5);
+            PlaySound(minusSoundGo, false);
             Debug.Log("비깜 상태가 아님");
             return;
         }
@@ -604,6 +664,8 @@ public class CartControllerTest : MonoBehaviour
             
             if (state != State.WaitHeadLight)
             {
+                MinusScoreCount(-5);
+                PlaySound(minusSoundGo, false);
                 Debug.Log("전조등 켤 상태가 아님");
                 return;
             }
@@ -623,6 +685,8 @@ public class CartControllerTest : MonoBehaviour
         {
             if (state != State.WaitOffDownLight)
             {
+                MinusScoreCount(-5);
+                PlaySound(minusSoundGo, false);
                 Debug.Log("하향등 켤 상태가 아님");
                 return;
             }
@@ -658,6 +722,8 @@ public class CartControllerTest : MonoBehaviour
                 Debug.Log("상향등 켤 타임 아님");
                 return;
             }*/
+            MinusScoreCount(-5);
+            PlaySound(minusSoundGo, false);
             upLightImage.SetActive(false);
         }
         else
@@ -691,6 +757,8 @@ public class CartControllerTest : MonoBehaviour
             
             if (state != State.WaitLeftSignal)  /// 꺼진 상태에서 실행되는 코드를 짠 거니까 꺼져있을 때 트루가 돼서 작동되는 코드를 써야 됨 반대로 켜진 상태 즉 트루일 땐 그걸 끄는 코드
             {
+                MinusScoreCount(-5);
+                PlaySound(minusSoundGo, false);
                 Debug.Log("좌깜 켤 타임 아님");
                 return;
             }
@@ -721,6 +789,8 @@ public class CartControllerTest : MonoBehaviour
         {
             if (state != State.WaitRightSignal)
             {
+                MinusScoreCount(-5);
+                PlaySound(minusSoundGo, false);
                 Debug.Log("우깜 켤 떄 아님");
                 return;
             }
@@ -752,6 +822,8 @@ public class CartControllerTest : MonoBehaviour
         {
             if (state != State.WaitReady)
             {
+                MinusScoreCount(-5);
+                PlaySound(minusSoundGo, false);
                 Debug.Log("시동 걸 상태가 아님"); // 시동 걸면 걍 종료
                 return;
             }
@@ -769,6 +841,8 @@ public class CartControllerTest : MonoBehaviour
         {
             if (state != State.WaitWiper)
             {
+                MinusScoreCount(-5);
+                PlaySound(minusSoundGo, false);
                 Debug.Log("와이퍼 켤 때 아님");
                 return;
             }
@@ -783,6 +857,8 @@ public class CartControllerTest : MonoBehaviour
         {
             if (state != State.WaitOffWiper)
             {
+                MinusScoreCount(-5);
+                PlaySound(minusSoundGo, false);
                 Debug.Log("와이퍼 끌 때 아님");
                 return;
             }
@@ -800,6 +876,8 @@ public class CartControllerTest : MonoBehaviour
     {
         if (state != State.WaitP)
         {
+            MinusScoreCount(-5);
+            PlaySound(minusSoundGo, false);
             Debug.Log("P누르는 타임 아님");
             return;
         }
@@ -814,6 +892,8 @@ public class CartControllerTest : MonoBehaviour
     {
         if (state != State.WaitR)
         {
+            MinusScoreCount(-5);
+            PlaySound(minusSoundGo, false);
             Debug.Log("R 누르는 타임 아님");
             return;
         }
@@ -828,6 +908,8 @@ public class CartControllerTest : MonoBehaviour
     {
         if (state != State.WaitN)
         {
+            MinusScoreCount(-5);
+            PlaySound(minusSoundGo, false);
             Debug.Log("N 누르는 타임 아님");
             return;
         }
@@ -848,6 +930,8 @@ public class CartControllerTest : MonoBehaviour
      
         if (state != State.WaitD)
         {
+            MinusScoreCount(-5);
+            PlaySound(minusSoundGo, false);
             Debug.Log("D 누르는 타임 아님");
             return;
         }
@@ -857,16 +941,6 @@ public class CartControllerTest : MonoBehaviour
         StartCoroutine(GearTest());
         
         PlaySound(headLightSound, false);
-    }
-
-    public void AccelPedal() // 차량 스크립트에서 속도 빨라지는 거 연결 중임
-    {
-        
-    }
-
-    public void BreakPedal()  // 마찬가지 아직 누르는 효과음을 안 넣어서 여기엔 쓸 게 없는 거임 그냥 상태 체크 하려고 추가한겨
-    {
-        
     }
 
     #region Internal
