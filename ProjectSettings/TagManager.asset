@@ -19,6 +19,7 @@ TagManager:
   - ParkSensor
   - RedLine
   - ParkingLine
+  - UPTest
   layers:
   - Default
   - TransparentFX
