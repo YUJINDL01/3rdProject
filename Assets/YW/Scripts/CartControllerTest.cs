@@ -358,7 +358,7 @@ public class CartControllerTest : MonoBehaviour
         // 두 번째 뽑는 건 중복 안 돼야 돼서 반복문과 조건문이 필요
         for (int limit = 100; limit > 0; limit--) // 이건 그냥 100번 반복해라 뭐 100번 인엔 나오겠지
         {
-            fourState2 = FourState.Gear; //(FourState)Random.Range(1, 5);
+            fourState2 = FourState.Signal; //(FourState)Random.Range(1, 5);
             if (fourState2 != fourState1)  // 만약에 뽑은 값이 중복되면 다시 뽑기 즉 진짜 조건문 뽑아라~~~  
             {
                 break;
