@@ -196,6 +196,8 @@ public class CartControllerTest : MonoBehaviour
      /// </summary>
 
 
+     public OnCollisionDetector onCollisionDetector;
+     
      public void MinusScoreCount(int amount)
      {
          score += amount; // 매개변수로 -5 하고 있으니까
@@ -228,6 +230,7 @@ public class CartControllerTest : MonoBehaviour
          audioSource4.clip = outSoundGo;
          audioSource4.loop = false;
          audioSource4.Play();
+         onCollisionDetector.Off();
 
          Debug.Log("실격입니다.");
 

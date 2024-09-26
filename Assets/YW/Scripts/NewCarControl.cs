@@ -1,8 +1,10 @@
 using System;
 using System.Numerics;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using Vector3 = UnityEngine.Vector3;
 
 public class NewCarControl : MonoBehaviour
@@ -35,6 +37,8 @@ public class NewCarControl : MonoBehaviour
         private float currentRotation = 0f; // 현재 회전 각도
 
 
+        public TMP_Text speedText;
+        
         /// 자동차 악셀, 브레이크
         /// 악셀은 클릭한 시간에 비례해서 길게 누르면 서서히 빨라지고, 
         /// 브레이크는 클릭한 시간에 비례해서 길게 누르면 서서히 느려짐
@@ -50,6 +54,21 @@ public class NewCarControl : MonoBehaviour
 
         void Update()
         {
+            // 정수로 나오게 하고 싶어서 int 로 바꿔줌
+            float speedInKmh = Mathf.FloorToInt(currentSpeed * 5); // 기존 유니티 속도는 m/s라 km/h 로 바꿔서 표현한다 생각 *5는 그냥 내가 임의로 지정한 거임
+
+            if (speedInKmh >= 0)
+            {
+                speedText.text = $"{speedInKmh} km/h";
+            }
+            else
+            {
+                speedText.text = "0km/h";
+            }
+            
+            
+            
+            
             if (isMovingForward)
             {
                 if (!isBreaking)
@@ -78,6 +97,11 @@ public class NewCarControl : MonoBehaviour
             
             /// 자동차 회전  -> 좌우 방향키로 회전
             float horizontalInput = Input.GetAxis("Horizontal");
+            
+            if (isMovingBackward)
+            {
+                horizontalInput = -horizontalInput;
+            }
         
             //회전 방향 계산
             float rotationAmount = horizontalInput * rotationSpeed * Time.deltaTime;
@@ -92,6 +116,7 @@ public class NewCarControl : MonoBehaviour
                 currentRotation = newRotation; // 회전 각도 업데이트
             }
 
+          
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 SceneManager.LoadScene("Fail");

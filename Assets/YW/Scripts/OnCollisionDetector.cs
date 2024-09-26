@@ -14,9 +14,20 @@ public class OnCollisionDetector : MonoBehaviour
     // On Collision Enter, OnTriggerEnter 통해서 작성
 
     public AudioSource audioSource;
-    public AudioClip stoneSound;
     
     public TMP_Text collisionText; // 불러올 텍스트 변수 지정
+
+    public bool isFail;
+
+    public CartControllerTest carControllerTest;
+
+
+    public void Off()
+    {
+        audioSource.enabled = false;
+        collisionText.enabled = false;
+    }
+
 
     private void Start()
     {
@@ -24,6 +35,7 @@ public class OnCollisionDetector : MonoBehaviour
         {
             collisionText.text = "";  // 게임 시작 시 텍스트 비워두기
         }
+        
     }
 
 
@@ -33,24 +45,30 @@ public class OnCollisionDetector : MonoBehaviour
         {
             Debug.Log("차선 이탈");
             collisionText.text = "차선 이탈, -15점"; // 차선 이탈 Text 띄우기
+            isFail = false;
+            carControllerTest.MinusScoreCount(-15);
             Invoke("ClearText", 3f); // 2초 뒤에 텍스트를 지우는 함수 호출
         }
         else if (other.gameObject.CompareTag("ParkSensor")) // 주차 검지선
         {
             Debug.Log("검지선 접촉");
             collisionText.text = "주차 검지선 접촉, -10점";
+            carControllerTest.MinusScoreCount(-10);
+            isFail = false;
             Invoke("ClearText", 3f);
         }
         // 적색 신호 받을 시에만 실행 되도록 -> 선 두 개 깔아놓고 RedLight 선이랑 GreenLight 선 나눠서 껐다가 켜지게 인식하게 해도 될 듯
         else if (other.gameObject.CompareTag("RedLine")) // 신호위반 감지 출발선
         {
             Debug.Log("신호 위반");
+            isFail = true;
             collisionText.text = "신호 위반 실격입니다";
             Invoke("ClearText", 3f);
         }
         else if (other.gameObject.CompareTag("ParkingLine")) // 주차선 밟았을때 통과
         {
             Debug.Log("주차 확인");
+            isFail = false;
             collisionText.text = "확인 되었습니다.";
             Invoke("ClearText", 3f);
         }
@@ -67,7 +85,6 @@ public class OnCollisionDetector : MonoBehaviour
         {
             Debug.Log("연석 탑승");
             collisionText.text = "바퀴가 연석에 접촉할 시 실격입니다.";
-            audioSource.PlayOneShot(stoneSound);
             
             Invoke("ClearText", 2f);
         }
@@ -82,7 +99,10 @@ public class OnCollisionDetector : MonoBehaviour
         if (collisionText != null)
         {
             collisionText.text = ""; // 텍스트를 빈 문자열로 설정하여 지우기
-            SceneManager.LoadScene("Fail");
+            if (isFail)
+            {
+                SceneManager.LoadScene("Fail");
+            }
         }
     }
     
