@@ -167,6 +167,7 @@ public class CartControllerTest : MonoBehaviour
 
     public Button skipButton;
     
+    
 
 
     public State state = State.WaitSeatBelt; // 이 값을 가지고 시작하게 변수 지정
@@ -185,11 +186,16 @@ public class CartControllerTest : MonoBehaviour
     public Animator wiperAnimator;
 
     public Animator wiperAnimator2;
+    
+    private MJUIManager mjUIManager;
      // 5초 안에 하라는 안내 음성 후 타이머 떠야 함 - 코루틴으로 음성 실행되는 밑에 코드 있으면 될 듯
      /// <summary>
      /// //////////////////////////////////////////////////////////////////////////////////////
      /// </summary>
-
+     private void Awake()
+     {
+         mjUIManager = FindObjectOfType<MJUIManager>();
+     }
 
      public OnCollisionDetector onCollisionDetector;
      
@@ -450,6 +456,7 @@ public class CartControllerTest : MonoBehaviour
     IEnumerator GearTest()
     {
         Debug.Log("1");
+        mjUIManager.Gear();
         yield return StartCoroutine(PlaySoundProcess(gearSoundGo, false));
         yield return StartCoroutine(PlaySoundProcess(bbiSound, false));
         
@@ -466,6 +473,11 @@ public class CartControllerTest : MonoBehaviour
     IEnumerator HeadLightTest()
     {
         Debug.Log("2");
+        mjUIManager.HeadLight();
+        mjUIManager.LowBeam();
+        mjUIManager.HighBeam();
+        
+        
         yield return StartCoroutine(PlaySoundProcess(headLightSoundGo, false));
         yield return StartCoroutine(PlaySoundProcess(bbiSound, false));
 
@@ -510,6 +522,8 @@ public class CartControllerTest : MonoBehaviour
     IEnumerator SignalTest()
     {
          Debug.Log("3");
+         mjUIManager.LeftBlinker();
+         mjUIManager.RightBlinker();
          yield return StartCoroutine(PlaySoundProcess(signalSoundGo, false));
        
 
@@ -564,7 +578,7 @@ public class CartControllerTest : MonoBehaviour
     IEnumerator WiperTest()
     {
         Debug.Log("4");
-        
+        mjUIManager.Wiper();
         yield return StartCoroutine(PlaySoundProcess(wiperSoundGo, false));
         yield return StartCoroutine(PlaySoundProcess(bbiSound, false));
         state = State.WaitWiper;
@@ -665,6 +679,7 @@ public class CartControllerTest : MonoBehaviour
 
         seatBeltImage.gameObject.SetActive(true);
         Invoke("HideImage", 1.5f);
+        mjUIManager.seatBelt.SetActive(false);
 
         StartCoroutine(SeatBeltSoundCorutine()); // 달칵 소리 난 후에 시동 켜라 음성 재생
     }
@@ -703,6 +718,7 @@ public class CartControllerTest : MonoBehaviour
             if (state == State.WaitOffHeadLight)
             {
                 state = State.OffDownLight;
+                mjUIManager.headLight.SetActive(false);
             }
 
             downLightImage.gameObject.SetActive(false);
@@ -854,6 +870,8 @@ public class CartControllerTest : MonoBehaviour
             if (state == State.WaitOffRightSignal)
             {
                 state = State.OffRightSignal;
+                mjUIManager.leftBlinker.SetActive(false);
+                mjUIManager.rightBlinker.SetActive(false);
             }
 
         }
@@ -908,6 +926,7 @@ public class CartControllerTest : MonoBehaviour
             
             isReady2 = true;
             Debug.Log("시동");
+            mjUIManager.key.SetActive(false);
             if (state == State.WaitReady)
             {
                 state = State.Ready;
@@ -948,6 +967,7 @@ public class CartControllerTest : MonoBehaviour
             }
             
             Debug.Log("와이퍼 끔");
+            mjUIManager.wiper.SetActive(false);
             if (state == State.WaitOffWiper)
             {
                 state = State.OffWiper;
@@ -974,6 +994,7 @@ public class CartControllerTest : MonoBehaviour
         Debug.Log("P");
         if (state == State.WaitP)
         {
+            mjUIManager.gear.SetActive(false);
             state = State.P;
         }
 
