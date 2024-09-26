@@ -14,7 +14,7 @@ public class MJSceneManager : MonoBehaviour
 
     public void Control()
     {
-        SceneManager.LoadScene("YW/Scenes/YWtestMap");
+        SceneManager.LoadScene("TwoVersionScene");
     }
 
     public void Exit()

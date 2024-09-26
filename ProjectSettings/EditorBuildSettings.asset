@@ -24,7 +24,7 @@ EditorBuildSettings:
     path: Assets/YJ/Scenes/Written_Result.unity
     guid: 6f5c63fc5e265dc4796a51d438662e81
   - enabled: 1
-    path: Assets/YW/Scenes/YWtestMap.unity
+    path: Assets/YW/Scenes/WheelMode.unity
     guid: 9750d03f78a4e1743aef4c963ba009d9
   - enabled: 1
     path: Assets/YW/Scenes/Fail.unity
@@ -32,5 +32,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/YW/Scenes/Success.unity
     guid: 744c40e79b5e976419b0c52fc6d1c773
+  - enabled: 1
+    path: Assets/YW/Scenes/ButtonMode.unity
+    guid: 64430c53d56037143bf01827b6bcc285
+  - enabled: 1
+    path: Assets/TwoVersionScene.unity
+    guid: 41578ee3b91e4a74fb80c99abdb32425
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
