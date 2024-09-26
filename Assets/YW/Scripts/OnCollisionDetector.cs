@@ -14,6 +14,9 @@ public class OnCollisionDetector : MonoBehaviour
     // On Collision Enter, OnTriggerEnter 통해서 작성
 
     public AudioSource audioSource;
+
+    public AudioClip bbiSound;
+    public AudioClip passSound;
     
     public TMP_Text collisionText; // 불러올 텍스트 변수 지정
 
@@ -69,10 +72,18 @@ public class OnCollisionDetector : MonoBehaviour
         {
             Debug.Log("주차 확인");
             isFail = false;
-            collisionText.text = "확인 되었습니다.";
+            collisionText.text = "확인되었습니다.";
             Invoke("ClearText", 3f);
         }
-        
+        else if (other.gameObject.CompareTag("GoalLine"))
+        {
+            Debug.Log("합격입니다");
+            isFail = false;
+            carControllerTest.PlaySound(bbiSound, false);
+            collisionText.text = "합격입니다.";
+            Invoke("PlayPassSound", 1f);
+            Invoke("Pass", 3f);
+        }
       
         
         
@@ -105,36 +116,46 @@ public class OnCollisionDetector : MonoBehaviour
             }
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+    private void Pass()
+    {
+        SceneManager.LoadScene("Success");
+    }
+
+    private void PlayPassSound()
+    {
+        carControllerTest.PlaySound(passSound, false);
+    }
+
+
+
+
+
+
+
+
+
     // Switch 써서 각 Case별로 나눠서 태그에 해당하는 UI 띄우기
     // trigger 통해서 나와야 하는 태그들
     // "안전벨트 미착용 시 실격입니다"
     // "바퀴가 연석에 접촉할 시 실격입니다." o
     // "신호 위반 실격입니다." ㅁ
-    
-    
+
+
     // "차선 이탈 -15점" o 
-    
+
     // 돌발 시 급정지 미이행 -10점
     // 가속 미이행 -10점
     // (주차)검지선 접촉 -10점, 주차브레이크 미이행 -10점 o , x
-    
+
     // 음성지시 미종료 시 차량 조작 -5점
-    
+
     // 과속 -3점 속도 n 이상 받으면 과속으로 측정 -> 악셀 키(f) 하나 더 만들어서  
-  
-   
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
 }

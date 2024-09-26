@@ -29,5 +29,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/YW/Scenes/Fail.unity
     guid: 1ba438bf8ea7372409ed7e54a7d27281
+  - enabled: 1
+    path: Assets/YW/Scenes/Success.unity
+    guid: 744c40e79b5e976419b0c52fc6d1c773
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

@@ -19,6 +19,7 @@ TagManager:
   - ParkSensor
   - RedLine
   - ParkingLine
+  - GoalLine
   layers:
   - Default
   - TransparentFX

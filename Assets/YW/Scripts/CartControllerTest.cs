@@ -1033,7 +1033,7 @@ public class CartControllerTest : MonoBehaviour
         seatBeltImage.gameObject.SetActive(false);
     }
 
-    private void PlaySound(AudioClip clip, bool loop) // 소리 재생하는 메소드 (클립은 다른데 기능은 같으니까 하나로 묶고 클립만 바꾸면 실행되도록)
+    public void PlaySound(AudioClip clip, bool loop) // 소리 재생하는 메소드 (클립은 다른데 기능은 같으니까 하나로 묶고 클립만 바꾸면 실행되도록)
     {
         audioSource.Stop();
         audioSource.clip = clip;
