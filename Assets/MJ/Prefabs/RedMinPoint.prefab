@@ -43,7 +43,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8128191870200108515}
   - component: {fileID: 5293928266859073989}
-  - component: {fileID: 5604657749825792785}
   m_Layer: 0
   m_Name: RedMinPoint (1)
   m_TagString: RedLine
@@ -87,22 +86,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5604657749825792785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5917545049671544107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18fe51c25cfc2b9478d743c6bfda7e8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  redLight: {fileID: 0}
-  yellowLight: {fileID: 0}
-  greenLight: {fileID: 0}
-  objectCollider: {fileID: 5293928266859073989}
 --- !u!1 &7455392979601815139
 GameObject:
   m_ObjectHideFlags: 0
