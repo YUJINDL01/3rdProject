@@ -30,7 +30,7 @@ public class RoomJoined : MonoBehaviour
         
         var result = await RunnerController.Runner.StartGame(new StartGameArgs() // 
         {
-            SessionName = "1234", //일단 방법호 1234에서 하게하기 
+            //SessionName = "1234", //일단 방법호 1234에서 하게하기 
             GameMode = GameMode.Shared, // 무작위로 세션에 참여
             MatchmakingMode = MatchmakingMode.FillRoom, // 오래된 방부터 채움 
             Scene = SceneRef.FromIndex(SceneUtility.GetBuildIndexByScenePath(MainSceneName)), // 씬 옮겨 가는 거 까진 성공했으나 동기화 안 됨

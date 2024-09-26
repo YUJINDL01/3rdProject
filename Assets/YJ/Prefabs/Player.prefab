@@ -385,3 +385,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nicknameText: {fileID: 5966098796823401387}
   scoreText: {fileID: 5113979633008947174}
+  playerImages:
+  - {fileID: 21300000, guid: 4a12cd2881b114c45841e77926009545, type: 2}
+  - {fileID: 21300000, guid: c02772b6a9277b646b967d83958e25f4, type: 2}
+  - {fileID: 21300000, guid: 1b9e973fa824ac74f9c887b906db16fa, type: 2}
+  - {fileID: 21300000, guid: 9d609e0ec0a269d49a24d2ce2ce7bcf8, type: 2}
+  - {fileID: 21300000, guid: 65b09ee1532dc6a4ab54dada88d830f4, type: 2}

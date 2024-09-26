@@ -12,9 +12,7 @@ public class GameManager : MonoBehaviour
    public NetworkPrefabRef sharedGameDataPrefabs;
    public NetworkPrefabRef playerPrefab;
    //public NetworkPrefabRef gameCanvas;
-
-
-   public Button readyButton;
+   
    public GameObject readyCanvas;
    public TMP_Text readyText;
    //public TMP_Text countdownText;
@@ -30,10 +28,19 @@ public class GameManager : MonoBehaviour
    
    public static GameManager Instance;
 
+   public Button readyButton;
+   public Button startButton;
+
+   public GameObject[] playerImage;
+
+   public GameObject waitingImage;
+
+   private int num = 0; 
+   
    private void Awake()
    {
       Instance = this;
-     
+      waitingImage.SetActive(true);
       readyCanvas.SetActive(true);
       quizCanvas.SetActive(true);
    }
@@ -51,7 +58,7 @@ public class GameManager : MonoBehaviour
    public void Ready()
    {
       _isReady = true;
-      readyButton.interactable = false;
+     readyButton.interactable = false;
       SharedGameData.Instance.RpcReady();
    }
    
@@ -72,6 +79,72 @@ public class GameManager : MonoBehaviour
       // 그냥 씬 로드하는 것도 ㄱㅊ
    }
 
+   /*
+   public IEnumerator CheckPlayerCount()
+   {
+      while (true)
+      {
+         var totalCount = RunnerController.Runner.SessionInfo.MaxPlayers;
+         var playerCount = RunnerController.Runner.SessionInfo.PlayerCount;
+         Debug.Log($"playerCount : {playerCount}");
+
+         if (totalCount == playerCount)
+         {
+            nonActiveReadyButton.gameObject.SetActive(false);
+            activeReadyButton.gameObject.SetActive(true);
+            startButton.gameObject.SetActive(false);
+            StartCoroutine(Wait());
+            yield break;
+         }
+         
+         timer += Time.deltaTime;
+         if (timer > timeout)
+         {
+            Debug.LogError("CheckPlayerCount timed out!");
+            yield break; // 루프 종료
+         }
+
+         yield return null; // 다음 프레임까지 대기
+      }
+   }
+
+   private IEnumerator Wait()
+   {
+      var wfs = new WaitForSeconds(0.5f);
+      
+      var totalCount = RunnerController.Runner.SessionInfo.MaxPlayers;
+      var currentCount = SharedGameData.ReadyCount;
+      
+      while (true)
+      {
+         Debug.Log($"totalCount: {totalCount}, currentCount: {currentCount}");
+         readyText.text = $"({currentCount}/{totalCount})";
+
+         yield return wfs;
+         
+         if (currentCount == totalCount)
+            break;
+      }
+
+      readyText.text = $"({SharedGameData.ReadyCount}/{RunnerController.Runner.SessionInfo.PlayerCount})";
+      
+      nonActiveReadyButton.gameObject.SetActive(false);
+      activeReadyButton.gameObject.SetActive(false);
+      startButton.gameObject.SetActive(true);
+      startButton.interactable = false;
+      
+      yield return wfs; 
+      
+      GameStart();
+   }
+
+   private void GameStart()
+   {
+      PlayerControll.Instance.RpcSetNickname(LoginManager.Value);
+      readyCanvas.SetActive(false);
+      StartCoroutine(ProblemTimer.Instance.Timers()); //코루틴 실행하는 법
+      Debug.Log("레디 끝남");
+   }*/
    
    private IEnumerator Process()
    {
@@ -81,35 +154,120 @@ public class GameManager : MonoBehaviour
 
       yield return null;
       
+      
       //SharedGameData 스폰 
       var dataOp = RunnerController.Runner.SpawnAsync(sharedGameDataPrefabs); // RunnerController가 없음 
       Debug.Log($"dataOp: {dataOp}");
       // yield return new WaitUntil(() => dataOp.Status == NetworkSpawnStatus.Spawned);
       while (dataOp.Status != NetworkSpawnStatus.Spawned)
       {
+        
          yield return null;
       }
       
+      for (int i = 0; i < playerImage.Length; i++)
+      {
+         playerImage[i].SetActive(false);
+      }
+
+      yield return null;
+      
       // 닉네임 추가
       //dataOp.Object.name = $"{nameof(SharedGameData)}: {dataOp.Object.Id}";
+      
+      // 최대 인원 올 떄까지 대기 
+      var wfs = new WaitForSeconds(0.5f);
+
+      while (RunnerController.Runner.SessionInfo.PlayerCount < RunnerController.Runner.SessionInfo.MaxPlayers)
+      {
+         
+         yield return new WaitForSeconds(1f);
+      }
+      waitingImage.SetActive(false);
+      readyButton.gameObject.SetActive(true);
+      startButton.gameObject.SetActive(false);
+      
+      int previousCount = -1; 
+      
+      //모두 준비 할 때까지 대기 
+         while (true)
+         {
+            var totalCount = RunnerController.Runner.SessionInfo.MaxPlayers;
+            var currentCount = SharedGameData.ReadyCount;
+            
+            Debug.Log($"totalCount: {totalCount}, currentCount: {currentCount}");
+            readyText.text = $"({currentCount}/{totalCount})";
+         
+            if (currentCount != previousCount)
+            {
+               if (currentCount > 0 && totalCount >= currentCount)
+               {
+                  playerImage[currentCount-1].SetActive(true);
+                  
+               }
+
+               previousCount = currentCount;
+            }
+         
+            yield return wfs;
+         
+            if (currentCount == totalCount)
+               break;
+         }
+
+         readyText.text = $"({SharedGameData.ReadyCount}/{RunnerController.Runner.SessionInfo.PlayerCount})";
+         readyButton.gameObject.SetActive(false);
+         startButton.gameObject.SetActive(true);
+         yield return wfs; 
+         
+         PlayerControll.Instance.RpcSetNickname(LoginManager.Value);
+         readyCanvas.SetActive(false);
+         StartCoroutine(ProblemTimer.Instance.Timers()); //코루틴 실행하는 법
+         Debug.Log("레디 끝남");
+      
 
       // 모든 플레이어가 레디할 때까지 대기 
-      var wfs = new WaitForSeconds(0.5f);
+    
+      
+      /*
+      int previousCount = -1; 
+      
       while (true)
       {
          var totalCount = RunnerController.Runner.SessionInfo.MaxPlayers;
          var currentCount = SharedGameData.ReadyCount;
          Debug.Log($"totalCount: {totalCount}, currentCount: {currentCount}");
-         readyText.text = $"Ready?\n({currentCount}/{totalCount})";
+         readyText.text = $"({currentCount}/{totalCount})";
+         
+         if (currentCount != previousCount)
+         {
+            if (currentCount >= 0 && totalCount != currentCount)
+            {
+                  playerImage[currentCount].SetActive(true);
+                  
+            }
 
+            previousCount = currentCount;
+         }
+         
          yield return wfs;
          
          if (currentCount == totalCount)
             break;
       }
 
-      readyText.text = $"Start!\n({SharedGameData.ReadyCount}/{RunnerController.Runner.SessionInfo.PlayerCount})";
+      readyText.text = $"({SharedGameData.ReadyCount}/{RunnerController.Runner.SessionInfo.PlayerCount})";
+      readyButton.gameObject.SetActive(false);
+      startButton.gameObject.SetActive(true);
       yield return wfs; 
+      
+      
+      
+      PlayerControll.Instance.RpcSetNickname(LoginManager.Value);
+      readyCanvas.SetActive(false);
+      StartCoroutine(ProblemTimer.Instance.Timers()); //코루틴 실행하는 법
+      Debug.Log("레디 끝남");
+      */
       
       
       /*
@@ -164,10 +322,6 @@ public class GameManager : MonoBehaviour
       // 플레이어 동작 
       //RunnerController.Runner.SpawnAsync(gameCanvas);
       //quizCanvas.SetActive(true);
-      PlayerControll.Instance.RpcSetNickname(LoginManager.Value);
-      readyCanvas.SetActive(false);
-      StartCoroutine(ProblemTimer.Instance.Timers()); //코루틴 실행하는 법
-      Debug.Log("레디 끝남");
    }
    
 }

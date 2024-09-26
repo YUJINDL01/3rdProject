@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
+using Fusion;
 using NUnit.Framework;
 using TMPro;
 using Unity.VisualScripting;
@@ -22,9 +23,10 @@ public class ProblemManager : MonoBehaviour
    public Image problemImage; //?? image 와 sprite의 차이점 ?? 게임 오브젝트와 에셋의 차이 
    public TMP_Text explanationText; 
    public VideoPlayer problemVideo;
-   public List<Button> answerButtons;
+   //public List<Button> answerButtons;
    public Button[] moveButton;
    
+   [HideInInspector]
    public int problemNumber;
 
    public int[,] answerSheet;
@@ -33,10 +35,17 @@ public class ProblemManager : MonoBehaviour
    private Color ClickColor = Color.blue;
    private Color originalColor = Color.white;
    
-   public List<Problem> problemsList;
    public List<int> clickedButtonNum;
 
+   private bool[] selectedPart;
+   private int problemQuantity;
+
+   private string mode; 
+   
    public static ProblemManager Instance;
+   
+   [HideInInspector]
+   public List<Problem> problemsList;
    //매개변수를 사용하는 것과 전역변수를 사용하는 것의 차이?? -> 의도에 따라, 매개변수를 사용하는 경우 다른 클래스에서도 조작 가능 
    //매개 변수 너무 많음 꼭 필요한 건지 생각해 볼 것 
    
@@ -47,7 +56,11 @@ public class ProblemManager : MonoBehaviour
       //버튼의 text에 접근하기
       //optionButtons = optionButtons.Find<"TMP(TMP)">();
       //TMP_Text[] buttonText = optionButtons.GetComponentInChildren<TMP_Text>();
-      int problemQuantity = 5;
+
+      problemQuantity = RoomManager.Instance.problemNum;
+      selectedPart = RoomManager.Instance.clickPart;
+      mode = RoomManager.Instance.mode;
+      
       problemNumber = 0;
       InitializeProblems(problemQuantity, problemNumber);
    }
@@ -59,7 +72,7 @@ public class ProblemManager : MonoBehaviour
       MRandoms(problemQuantity);
       
       //문제수에 맞게 답안지 버튼 정리 // 초기 1회 
-      MAnswerButton(problemQuantity);
+      //MAnswerButton(problemQuantity);
 
       MAnswerSheet();
       
@@ -75,54 +88,130 @@ public class ProblemManager : MonoBehaviour
    private List<Problem> MRandoms(int problemQuantity)
    {
          problemsList = new List<Problem>();
-         int[] problemRange = new int[7]{0, 549, 680, 780, 865, 965, 1000};
-         int[] numbers = new int[6]; 
-         
-         switch (problemQuantity)
+
+         switch (mode)
          {
-            case 5:
-               numbers = new int[] { 1, 1, 1, 1, 1, 0 };
-               break;
-            case 10:
-               numbers = new int[] { 4, 2, 2, 1, 1, 0 }; // 총합 25
-               Debug.Log(numbers[0]);
-               break;
-            case 20:
-               numbers = new int[] { 9, 2, 3, 3, 2, 1 }; // 총합 50점
-               Debug.Log(numbers[0]);
-               break;
-            case 40:
-               numbers = new int[] { 17, 4, 7, 6, 5, 1 }; // 총합 100점  17,4,7,6,5,1
-               Debug.Log(numbers[0]);
-               break;
-         }
-         
-         // EProblemType.i 인 type을 numbers[i] 만큼 리스트에 랜덤으로 추가
-         for (int i = 0; i < numbers.Length; i++)
-         {
-            int j = 0;
-            
-            while (j < numbers[i]) // 번호가 존재할 경우에만 추가 
-            {
-               int no = Random.Range(problemRange[i] + 1, problemRange[i + 1]); //번호  
-               Problem problems = Resources.Load<Problem>($"{no}"); // 그 번호의 문제  // Resources.load -> addressable asset 사용 추천 
-               
-               var containProblem = problemsList.Find(p => p.number == no);
-               
-               if (problems != null && containProblem == null) // 만약에 no 가 problem 안에 있으면 추가 아니면 다시 
+            case "TestMode":
+               int[] problemRange = new int[7]{0, 549, 680, 780, 865, 965, 1000};
+               int[] numbers = new int[6]; 
+                  
+               switch (problemQuantity)
                {
-                  problemsList.Add(problems);
-                  Debug.Log($"Type : {problems.type}, Number : {no}, {containProblem}");
-                  j++;
+                  case 5:
+                     numbers = new int[] { 1, 1, 1, 1, 1, 0 };
+                     break;
+                  case 10:
+                     numbers = new int[] { 4, 2, 2, 1, 1, 0 }; // 총합 25
+                     Debug.Log(numbers[0]);
+                     break;
+                  case 20:
+                     numbers = new int[] { 9, 2, 3, 3, 2, 1 }; // 총합 50점
+                     Debug.Log(numbers[0]);
+                     break;
+                  case 40:
+                     numbers = new int[] { 17, 4, 7, 6, 5, 1 }; // 총합 100점  17,4,7,6,5,1
+                     Debug.Log(numbers[0]);
+                     break;
                }
-            }
+                  
+                  // EProblemType.i 인 type을 numbers[i] 만큼 리스트에 랜덤으로 추가
+               for (int i = 0; i < numbers.Length; i++)
+               {
+                  int j = 0;
+
+                  while (j < numbers[i]) // 번호가 존재할 경우에만 추가 
+                  {
+                     int no = Random.Range(problemRange[i] + 1, problemRange[i + 1]); //번호  
+                     Problem
+                        problems = Resources
+                           .Load<Problem>($"{no}"); // 그 번호의 문제  // Resources.load -> addressable asset 사용 추천 
+
+                     var containProblem = problemsList.Find(p => p.number == no);
+
+                     if (problems != null && containProblem == null) // 만약에 no 가 problem 안에 있으면 추가 아니면 다시 
+                     {
+                        problemsList.Add(problems);
+                        Debug.Log($"Type : {problems.type}, Number : {no}, {containProblem}");
+                        j++;
+                     }
+                  }
+               } 
+               break;
+            
+            case "SurvivalMode": 
+               break;
+            
+            case "QuizMode":
+
+               /*
+               for (int i = 0; i < selectedPart.Length; i++)
+               {
+                  if (selectedPart[i] == true)
+                  {
+                     // 풀고 싶다고 한 문제분야의 
+                     EProblemType type = (EProblemType)(i);
+                     string problemType = type.ToString();
+                     Debug.Log($"problemType: {problemType}");
+                     
+                  }
+               }
+               */
+               
+               problemRange = new int[7]{0, 549, 680, 780, 865, 965, 1000};
+               numbers = new int[6]; 
+                  
+               switch (problemQuantity)
+               {
+                  case 5:
+                     numbers = new int[] { 1, 1, 1, 1, 1, 0 };
+                     break;
+                  case 10:
+                     numbers = new int[] { 4, 2, 2, 1, 1, 0 }; // 총합 25
+                     Debug.Log(numbers[0]);
+                     break;
+                  case 20:
+                     numbers = new int[] { 9, 2, 3, 3, 2, 1 }; // 총합 50점
+                     Debug.Log(numbers[0]);
+                     break;
+                  case 40:
+                     numbers = new int[] { 17, 4, 7, 6, 5, 1 }; // 총합 100점  17,4,7,6,5,1
+                     Debug.Log(numbers[0]);
+                     break;
+               }
+                  
+               // EProblemType.i 인 type을 numbers[i] 만큼 리스트에 랜덤으로 추가
+               for (int i = 0; i < numbers.Length; i++)
+               {
+                  int j = 0;
+
+                  while (j < numbers[i]) // 번호가 존재할 경우에만 추가 
+                  {
+                     int no = Random.Range(problemRange[i] + 1, problemRange[i + 1]); //번호  
+                     Problem
+                        problems = Resources
+                           .Load<Problem>($"{no}"); // 그 번호의 문제  // Resources.load -> addressable asset 사용 추천 
+
+                     var containProblem = problemsList.Find(p => p.number == no);
+
+                     if (problems != null && containProblem == null) // 만약에 no 가 problem 안에 있으면 추가 아니면 다시 
+                     {
+                        problemsList.Add(problems);
+                        Debug.Log($"Type : {problems.type}, Number : {no}, {containProblem}");
+                        j++;
+                     }
+                  }
+               } 
+               break;
+
          }
+         
          Debug.Log("randoms end");
          
         // ScoreManager.Instance.ProblemSave();
       return problemsList; 
    }
 
+   /*
    private void MAnswerButton(int problemQuantity)
    {
       for (int i = 0; i < answerButtons.Count; i++)
@@ -139,9 +228,11 @@ public class ProblemManager : MonoBehaviour
       }
       
    }
-
+*/
    public void CheckCurrentNumber(int problemNumber)
    {
+      Debug.Log($"현재 문제 인덱스 : {this.problemNumber}");
+      
       if (problemNumber == 0)
       {
          problemNumber = 0; 
@@ -274,13 +365,15 @@ public class ProblemManager : MonoBehaviour
       }
    }
    
+   /*
    public void MButton(int buttonNumber)
    {
       //MAnswerButtonChange();
       problemNumber = buttonNumber;
       CheckCurrentNumber(problemNumber);
    }
-
+*/
+   
    public void MMButton(int buttonNumber)
    {
       //MAnswerButtonChange();
