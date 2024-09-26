@@ -20,6 +20,7 @@ TagManager:
   - RedLine
   - ParkingLine
   - GoalLine
+  - UPTest
   layers:
   - Default
   - TransparentFX

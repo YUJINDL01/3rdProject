@@ -20,6 +20,10 @@ public class OnCollisionDetector : MonoBehaviour
     public AudioClip okSound;
     
     public TMP_Text collisionText; // 불러올 텍스트 변수 지정
+    
+    public float timeThreshold = 5f; // 체크하려는 시간 (초 단위)
+    private float timeInside = 0f;   // 트리거 안에 머문 시간
+    private bool isInside = false;   // 객체가 트리거 안에 있는지 여부
 
     public bool isFail;
 
@@ -76,6 +80,34 @@ public class OnCollisionDetector : MonoBehaviour
             collisionText.text = "확인되었습니다.";
             carControllerTest.PlaySound(okSound, false);
             Invoke("ClearText", 3f);
+        }
+        else if (other.gameObject.CompareTag("UPTest"))
+        {
+            Debug.Log("언덕 입니다.");
+            isInside = true; // 들어왔는지 확인
+            timeInside = 0f; // 시간 초기화
+            collisionText.text = "3초이상 정지 후 출발 하십시오.";
+            Invoke("ClearText", 3f);
+            
+        }
+        
+      
+        
+        
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("UPTest"))
+        {
+            Debug.Log("언덕입니다");
+            timeInside += Time.deltaTime;
+            
+            if (timeInside >= timeThreshold)
+            {
+                Debug.Log("확인되었습니다.");
+            }
+
         }
         else if (other.gameObject.CompareTag("GoalLine"))
         {
