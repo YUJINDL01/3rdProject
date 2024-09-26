@@ -17,6 +17,7 @@ public class OnCollisionDetector : MonoBehaviour
 
     public AudioClip bbiSound;
     public AudioClip passSound;
+    public AudioClip okSound;
     
     public TMP_Text collisionText; // 불러올 텍스트 변수 지정
 
@@ -73,6 +74,7 @@ public class OnCollisionDetector : MonoBehaviour
             Debug.Log("주차 확인");
             isFail = false;
             collisionText.text = "확인되었습니다.";
+            carControllerTest.PlaySound(okSound, false);
             Invoke("ClearText", 3f);
         }
         else if (other.gameObject.CompareTag("GoalLine"))

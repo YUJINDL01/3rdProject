@@ -1,14 +1,9 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using NUnit.Framework.Interfaces;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
-using Random = UnityEngine.Random;
 
 public class CartControllerTest : MonoBehaviour
 {
@@ -169,8 +164,8 @@ public class CartControllerTest : MonoBehaviour
 
     public AudioClip minusSoundGo;
     public AudioClip outSoundGo;
-    
-    
+
+    public Button skipButton;
     
 
 
@@ -344,19 +339,20 @@ public class CartControllerTest : MonoBehaviour
             audioSource2.Play();
         }
 
-        /*
+        // 여기 밑에부터
+        
         yield return StartCoroutine(PlaySoundProcess(randomSoundGo, false)); // 시동 1번 소리 기다리고 끝나면 바로 재생되게 
       
 
         // 4 of 2 선택하기
         // 1, 2, 3, 4
         // int i = Random.Range(1, 5); // 5는 빼고 1234 중에 하나 추출
-        fourState1 = (FourState)Random.Range(1, 5); // int 형 i를 fourState 타입으로 변환 //FourState.Wiper 이런 식으로 테스트 해 볼 거 입력
+        fourState1 = FourState.Wiper; //(FourState)Random.Range(1, 5); // int 형 i를 fourState 타입으로 변환 //FourState.Wiper 이런 식으로 테스트 해 볼 거 입력
         
         // 두 번째 뽑는 건 중복 안 돼야 돼서 반복문과 조건문이 필요
         for (int limit = 100; limit > 0; limit--) // 이건 그냥 100번 반복해라 뭐 100번 인엔 나오겠지
         {
-            fourState2 = (FourState)Random.Range(1, 5);
+            fourState2 = FourState.Gear; //(FourState)Random.Range(1, 5);
             if (fourState2 != fourState1)  // 만약에 뽑은 값이 중복되면 다시 뽑기 즉 진짜 조건문 뽑아라~~~  
             {
                 break;
@@ -399,7 +395,9 @@ public class CartControllerTest : MonoBehaviour
         yield return StartCoroutine(PlaySoundProcess(bbiSound, false));
 
         StartCoroutine(TimerTextCoroutine(10f, -5, () => state == State.Start));
-    */    
+        
+     // 여기까지 주석처리 하면 랜덤 안 하고 넘어감
+     
         state = State.WaitSideBreak;
         yield return new WaitUntil(() => state == State.SideBreak);
         state = State.WaitStart;
@@ -408,7 +406,32 @@ public class CartControllerTest : MonoBehaviour
         Debug.Log("기능 조작 시험 끝");
         state = State.Complete;
     }
-    
+
+    public void Skip()
+    {
+        audioSource.Stop();
+        audioSource2.Stop();
+        audioSource3.Stop();
+        audioSource4.Stop();
+
+        seatBeltHeper.text = "";
+        timerText.text = "";
+        penaltyText.text = "";
+
+        seatBeltImage.SetActive(false);
+        upLightImage.SetActive(false);
+        downLightImage.SetActive(false);
+
+        onCollisionDetector.Off();
+        StopAllCoroutines();
+        
+        // 소리, 코루틴, 호출되던 거 다 끄기
+
+        newCarControl.enabled = true;
+        skipButton.gameObject.SetActive(false);
+     
+        state = State.Complete;
+    }
     
     
 
@@ -861,15 +884,17 @@ public class CartControllerTest : MonoBehaviour
 
     public void Ready()
     {
-       
-        if (isReady2 == true)  // 위에 코드가 시동 안 켤 때 키라고 작동한 코드니까 트루로  // 시동2 코루틴 자체를 끄기
+
+        if (isReady2 == true) // 위에 코드가 시동 안 켤 때 키라고 작동한 코드니까 트루로  // 시동2 코루틴 자체를 끄기
         {
-            isReady2 = false;  // 버튼 눌렀을 때 트루 펄스 왔다 갔다
+            isReady2 = false; // 버튼 눌렀을 때 트루 펄스 왔다 갔다
             audioSource2.Stop();
             StopAllCoroutines();
 
-            state = State.OffReady;
-
+            if (state == State.WaitOffReady)
+            {
+                state = State.OffReady;
+            }
         }
         else
         {
