@@ -114,11 +114,13 @@ public class NewCarControl : MonoBehaviour
             float newRotation = currentRotation + rotationAmount;
         
             // 새로운 회전 각도가 허용 범위 안에 있는지 확인
-            if(newRotation > -maxRotationAngle && newRotation < maxRotationAngle)
+            // if(newRotation > -maxRotationAngle && newRotation < maxRotationAngle)
             {
-                handleTransform.localRotation = Quaternion.Euler(26.078f, -newRotation, 0);
-                transform.Rotate(0, rotationAmount, 0);
-                currentRotation = newRotation; // 회전 각도 업데이트
+                
+                
+                
+            transform.Rotate(0, rotationAmount, 0);
+            currentRotation = newRotation; // 회전 각도 업데이트
             }
             
             // 0으로 바꿔줘야 됨
@@ -131,7 +133,7 @@ public class NewCarControl : MonoBehaviour
                 SceneManager.LoadScene("Fail");
             }
         }
-    
+
         public void MoveForward()  // 앞으로 가는 코드 D
         {
             isMovingForward = true;
@@ -170,8 +172,15 @@ public class NewCarControl : MonoBehaviour
             currentSpeed -= deceleration * Time.deltaTime; // 시간에 따라 속도 감소
             currentSpeed = Mathf.Clamp(currentSpeed, 0f, maxSpeed); // 최소 속도는 0
         }
+
+
+        // -1부터 +1까지의 값들을 -120부터 120까지 바꿔주기
         
-        
+        public void Handle(float value)
+        {
+            Debug.Log(value*maxRotationAngle);
+            handleTransform.localRotation = Quaternion.Euler(26.078f, -value * maxRotationAngle, 0);
+        }
     
         
 }
