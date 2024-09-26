@@ -18,6 +18,7 @@ public class OnCollisionDetector : MonoBehaviour
     public AudioClip bbiSound;
     public AudioClip passSound;
     public AudioClip okSound;
+    public AudioClip hillSoundGo;
     
     public TMP_Text collisionText; // 불러올 텍스트 변수 지정
     
@@ -32,8 +33,8 @@ public class OnCollisionDetector : MonoBehaviour
 
     public void Off()
     {
-        audioSource.enabled = false;
-        collisionText.enabled = false;
+        audioSource.Stop();
+        collisionText.text = "";
     }
 
 
@@ -53,6 +54,7 @@ public class OnCollisionDetector : MonoBehaviour
         {
             Debug.Log("차선 이탈");
             collisionText.text = "차선 이탈, -15점"; // 차선 이탈 Text 띄우기
+            carControllerTest.PlaySound(bbiSound, false);
             isFail = false;
             carControllerTest.MinusScoreCount(-15);
             Invoke("ClearText", 3f); // 2초 뒤에 텍스트를 지우는 함수 호출
@@ -61,6 +63,7 @@ public class OnCollisionDetector : MonoBehaviour
         {
             Debug.Log("검지선 접촉");
             collisionText.text = "주차 검지선 접촉, -10점";
+            carControllerTest.PlaySound(bbiSound, false);
             carControllerTest.MinusScoreCount(-10);
             isFail = false;
             Invoke("ClearText", 3f);
@@ -71,6 +74,7 @@ public class OnCollisionDetector : MonoBehaviour
             Debug.Log("신호 위반");
             isFail = true;
             collisionText.text = "신호 위반 실격입니다";
+            carControllerTest.PlaySound(bbiSound, false);
             Invoke("ClearText", 3f);
         }
         else if (other.gameObject.CompareTag("ParkingLine")) // 주차선 밟았을때 통과
@@ -83,12 +87,23 @@ public class OnCollisionDetector : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("UPTest"))
         {
-            Debug.Log("언덕 입니다.");
+            Debug.Log("언덕입니다.");
             isInside = true; // 들어왔는지 확인
             timeInside = 0f; // 시간 초기화
-            collisionText.text = "3초이상 정지 후 출발 하십시오.";
+            collisionText.text = "3초 이상 정지 후 출발하십시오.";
+
+            carControllerTest.PlaySound(hillSoundGo, false);
             Invoke("ClearText", 3f);
             
+        }
+        else if (other.gameObject.CompareTag("GoalLine"))
+        {
+            Debug.Log("합격입니다");
+            isFail = false;
+            collisionText.text = "합격입니다.";
+            Invoke("PlayBbiSound",2f); // 삐소리 안 남
+            Invoke("PlayPassSound", 1f);
+            Invoke("Pass", 3f);
         }
         
       
@@ -106,17 +121,9 @@ public class OnCollisionDetector : MonoBehaviour
             if (timeInside >= timeThreshold)
             {
                 Debug.Log("확인되었습니다.");
+                carControllerTest.PlaySound(okSound, false);
             }
 
-        }
-        else if (other.gameObject.CompareTag("GoalLine"))
-        {
-            Debug.Log("합격입니다");
-            isFail = false;
-            carControllerTest.PlaySound(bbiSound, false);
-            collisionText.text = "합격입니다.";
-            Invoke("PlayPassSound", 1f);
-            Invoke("Pass", 3f);
         }
       
         
@@ -130,6 +137,7 @@ public class OnCollisionDetector : MonoBehaviour
         {
             Debug.Log("연석 탑승");
             collisionText.text = "바퀴가 연석에 접촉할 시 실격입니다.";
+            carControllerTest.PlaySound(bbiSound, false);
             
             Invoke("ClearText", 2f);
         }
@@ -159,6 +167,12 @@ public class OnCollisionDetector : MonoBehaviour
     private void PlayPassSound()
     {
         carControllerTest.PlaySound(passSound, false);
+    }
+
+    private void PlayBbiSound()
+    {
+        Debug.Log("삐소리 플레이");
+        carControllerTest.PlaySound(bbiSound, false);
     }
 
 
