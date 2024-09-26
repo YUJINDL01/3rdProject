@@ -19,6 +19,14 @@ TagManager:
   - ParkSensor
   - RedLine
   - ParkingLine
+  - GoalLine
+  - UpTest1
+  - Speed1
+  - Speed2
+  - Warn1
+  - Warn2
+  - Warn3
+  - Warn4
   layers:
   - Default
   - TransparentFX

@@ -632,7 +632,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1593691030841920431}
   - component: {fileID: 5074673886791431381}
-  - component: {fileID: 7739673574292534410}
   - component: {fileID: 6416339093454863425}
   - component: {fileID: 3085410635360136724}
   - component: {fileID: 2918351269797041761}
@@ -709,29 +708,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!136 &7739673574292534410
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1422261733225220363}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.87763935
-  m_Height: 4.5818577
-  m_Direction: 2
-  m_Center: {x: -0.016252935, y: 0.5591352, z: 0.042339325}
 --- !u!82 &6416339093454863425
 AudioSource:
   m_ObjectHideFlags: 0
@@ -842,9 +818,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  accelSpeed: 10
+  acceleration: 1
+  maxSpeed: 5
+  deceleration: 2
+  currentSpeed: 0
   rotationSpeed: 75
   maxRotationAngle: 900
+  speedText: {fileID: 0}
 --- !u!114 &2918351269797041761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -860,6 +840,8 @@ MonoBehaviour:
   audioSource: {fileID: 6416339093454863425}
   stoneSound: {fileID: 8300000, guid: aa78e8ec1bc57004a850e00cef3ca864, type: 3}
   collisionText: {fileID: 0}
+  isFail: 0
+  carControllerTest: {fileID: 0}
 --- !u!1 &1542435792052245253
 GameObject:
   m_ObjectHideFlags: 0

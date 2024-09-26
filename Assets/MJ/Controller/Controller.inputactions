@@ -148,6 +148,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "SeatBelt",
+                    "type": "Button",
+                    "id": "c7845892-3360-42ed-bf52-06f87ccce1a9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Tap",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -329,12 +338,12 @@
                 },
                 {
                     "name": "",
-                    "id": "0cc61d2e-a450-4ac4-b848-169f1f996f8b",
-                    "path": "<HID::Logitech G29 Driving Force Racing Wheel>/stick/x",
+                    "id": "19b755f1-c220-48b3-a3ff-fa9bb119a57d",
+                    "path": "<HID::Logitech G29 Driving Force Racing Wheel>/button9",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "SeatBelt",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

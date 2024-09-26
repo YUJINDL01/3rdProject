@@ -1,7 +1,9 @@
 using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class TrafficLightManager : MonoBehaviour
+public class TrafficLightManager2 : MonoBehaviour
 {
    public GameObject redLight;
    public GameObject yellowLight;
@@ -9,13 +11,22 @@ public class TrafficLightManager : MonoBehaviour
 
    public Collider objectCollider;
 
+   
+
    private void Start() // 반복되며 실행되도록
    {
+      
       //  초기 상태 설정: 빨간불 켜기
       SetRedLight();
-      StartCoroutine(TrafficLightManagerCycle());
       objectCollider = GetComponent<Collider>(); // 컴퍼넌트 가져와
 
+      StartCoroutine(StartTrafficLightManger2(3f));
+   }
+
+   private IEnumerator StartTrafficLightManger2(float delay)
+   {
+      yield return new WaitForSeconds(delay);
+      StartCoroutine(TrafficLightManagerCycle());
    }
 
    private void SetRedLight() // 빨간불 설정
@@ -45,6 +56,7 @@ public class TrafficLightManager : MonoBehaviour
       {
          yield return new WaitForSeconds(4f); // 빨간불 4초
          objectCollider.enabled = false;
+         Debug.Log("빨간불켜짐");
 
          SetGreenLight();
          yield return new WaitForSeconds(5f); // 초록불 5초
