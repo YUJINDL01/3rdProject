@@ -22,8 +22,11 @@ public class RunnerController : MonoBehaviour, INetworkRunnerCallbacks
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player) // 플레이어사 게임에 참여 
     {
+
+        //int playerOrder = Runner.SessionInfo.PlayerCount - 1;
+        //StartCoroutine(GameManager.Instance.CheckPlayerCount());
         //Debug.Log($"OnPlayerJoined : {player.PlayerId}");
-        
+
         /*
         Debug.Log("###사람왔다");
         // 첫 번째 플레이어인지 확인

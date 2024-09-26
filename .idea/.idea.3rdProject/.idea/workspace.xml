@@ -6,14 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="294f6a5c-8b49-45bd-816b-9f85d433d539" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.3rdProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.3rdProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MJ/Scene/Login.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MJ/Scene/Login.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/YJ/Prefabs/Rank.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Prefabs/Rank.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/YJ/Prefabs/Rank.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Prefabs/Rank.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scenes/Written_Result.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scenes/Written_Result.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/PlayerControll.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/PlayerControll.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/PlayerSpawn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/PlayerSpawn.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/RankManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/RankManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/TestEnd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/TestEnd.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scenes/Written_RoomCreate.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scenes/Written_RoomCreate.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scenes/Written_TEST.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scenes/Written_TEST.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/ModeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/ModeManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/ProblemManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/ProblemManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/ProblemTimer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/ProblemTimer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/RoomJoinedManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/RoomJoinedManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/RoomManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/RoomManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/RunnerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/RunnerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/SharedGameData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/SharedGameData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YJ/TextMesh Pro/Resources/Fonts &amp; Materials/전기안전체 REGULAR SDF 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/TextMesh Pro/Resources/Fonts &amp; Materials/전기안전체 REGULAR SDF 1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,10 +103,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="34048">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="34048" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -126,6 +132,9 @@
       <workItem from="1727189609863" duration="9609000" />
       <workItem from="1727228068427" duration="33044000" />
       <workItem from="1727275307908" duration="9118000" />
+      <workItem from="1727286969254" duration="31414000" />
+      <workItem from="1727340883521" duration="744000" />
+      <workItem from="1727342053709" duration="1380000" />
     </task>
     <servers />
   </component>
@@ -139,6 +148,17 @@
     <option name="unityProjectFolder" value="true" />
   </component>
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>

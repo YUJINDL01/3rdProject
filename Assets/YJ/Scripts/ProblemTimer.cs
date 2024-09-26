@@ -12,14 +12,16 @@ public class ProblemTimer : MonoBehaviour
 
     public static ProblemTimer Instance;
 
-    private Color _originColor = new Color(50f / 255f, 187f / 255f, 108f/255f, 255f / 255f);
+    private Color _originColor = new Color(46f / 255f, 199f / 255f, 111f/255f, 255f / 255f);
     private Color _iColor = Color.red;
     private int timeOver = 0;
+    private int limit;
 
     private void Awake()
     {
         Instance = this;
        // StartCoroutine(Timers());
+       limit = RoomManager.Instance.problemNum;
     }
     
     public IEnumerator Timers()
@@ -44,14 +46,19 @@ public class ProblemTimer : MonoBehaviour
 
         yield return null;
         
+        ScoreManager.Instance.AnswerCheck(timeOver);
+        yield return new WaitForSecondsRealtime(1f);
+        ScoreManager.Instance.OffOX();
+        
         TimeDone();
     }
 
     void TimeDone()
     {
+        
         timeOver++;
 
-        if (timeOver == 5)
+        if (timeOver == limit)
         {
             ResultManager.Instance.AnswerOXSave(); // 정담 여부랑 답안지 만들기 위함
             

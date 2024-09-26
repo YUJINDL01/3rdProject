@@ -15,6 +15,7 @@ public class SharedGameData : NetworkBehaviour
         
         Instance = this;
 
+        
         ReadyCount = 0;
         
         
