@@ -45,6 +45,7 @@ public class TrafficLightManager : MonoBehaviour
       {
          yield return new WaitForSeconds(4f); // 빨간불 4초
          objectCollider.enabled = false;
+         Debug.Log("빨간불켜짐");
 
          SetGreenLight();
          yield return new WaitForSeconds(5f); // 초록불 5초
