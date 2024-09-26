@@ -326,17 +326,6 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0cc61d2e-a450-4ac4-b848-169f1f996f8b",
-                    "path": "<HID::Logitech G29 Driving Force Racing Wheel>/stick/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         }

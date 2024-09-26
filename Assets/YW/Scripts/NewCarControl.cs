@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
 public class NewCarControl : MonoBehaviour
@@ -33,6 +34,9 @@ public class NewCarControl : MonoBehaviour
         /// 자동차 회전
         public float rotationSpeed = 75f; // 회전 속도
         public float maxRotationAngle = 900f; // 최대 회전 각도 (승용차는 3회전이 최대, 스티어링  2.5바퀴)
+        
+
+        public Transform handleTransform;
         
         private float currentRotation = 0f; // 현재 회전 각도
 
@@ -112,9 +116,14 @@ public class NewCarControl : MonoBehaviour
             // 새로운 회전 각도가 허용 범위 안에 있는지 확인
             if(newRotation > -maxRotationAngle && newRotation < maxRotationAngle)
             {
+                handleTransform.localRotation = Quaternion.Euler(26.078f, -newRotation, 0);
                 transform.Rotate(0, rotationAmount, 0);
                 currentRotation = newRotation; // 회전 각도 업데이트
             }
+            
+            // 0으로 바꿔줘야 됨
+            
+            
 
           
             if (Input.GetKeyDown(KeyCode.Q))

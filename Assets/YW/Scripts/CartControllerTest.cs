@@ -319,6 +319,7 @@ public class CartControllerTest : MonoBehaviour
         seatBeltHeper.gameObject.SetActive(false);
         yield return StartCoroutine(PlaySoundProcess(readySoundGo, false)); // 시동 켜라 음성 재생
         yield return StartCoroutine(PlaySoundProcess(bbiSound, false));
+        mjUIManager.Key();
 
         state = State.WaitReady;
         yield return StartCoroutine(TimerTextCoroutine(5f, -5, () => state == State.Ready));
@@ -411,6 +412,7 @@ public class CartControllerTest : MonoBehaviour
 
         Debug.Log("기능 조작 시험 끝");
         state = State.Complete;
+        skipButton.gameObject.SetActive(false);
     }
 
     public void Skip()
@@ -768,13 +770,13 @@ public class CartControllerTest : MonoBehaviour
         }
         else
         {
-            if (state != State.WaitDownLight)
+            if (state != State.WaitDownLight && state != State.Complete)
             {
                 Debug.Log("하향등");
                 return;
             }
 
-            if (state == State.WaitOffDownLight)
+            if (state == State.WaitDownLight)
             {
                 state = State.DownLight;
             }
@@ -809,7 +811,7 @@ public class CartControllerTest : MonoBehaviour
                 Debug.Log("상황등");
             }*/
 
-            if (state == State.WaitOffUpLight)
+            if (state == State.WaitUpLight)
             {
                 state = State.UpLight;
             }
@@ -845,7 +847,7 @@ public class CartControllerTest : MonoBehaviour
                 return;
             }
 
-            if (state == State.WaitOffLeftSignal)
+            if (state == State.WaitLeftSignal)
             {
                 state = State.LeftSignal;
             }
@@ -888,7 +890,7 @@ public class CartControllerTest : MonoBehaviour
             signalRight = true;
             
             Debug.Log("우깜");
-            if (state == State.WaitOffRightSignal)
+            if (state == State.WaitRightSignal)
             {
                 state = State.RightSignal;
             }
