@@ -178,7 +178,6 @@ public class NewCarControl : MonoBehaviour
         
         public void Handle(float value)
         {
-            Debug.Log(value*maxRotationAngle);
             handleTransform.localRotation = Quaternion.Euler(26.078f, -value * maxRotationAngle, 0);
         }
     

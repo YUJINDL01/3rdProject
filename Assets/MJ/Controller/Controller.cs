@@ -169,7 +169,7 @@ public class Controller : MonoBehaviour
     public void Handle(InputAction.CallbackContext context)
     {
         newCarControl.Handle(context.ReadValue<float>());
-        Debug.Log($"Handle : {context.ReadValue<float>()}");
+        // Debug.Log($"Handle : {context.ReadValue<float>()}");
     }
     public void SeatBelt(InputAction.CallbackContext context)
     {
