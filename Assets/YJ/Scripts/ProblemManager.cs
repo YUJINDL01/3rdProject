@@ -56,8 +56,10 @@ public class ProblemManager : MonoBehaviour
       //버튼의 text에 접근하기
       //optionButtons = optionButtons.Find<"TMP(TMP)">();
       //TMP_Text[] buttonText = optionButtons.GetComponentInChildren<TMP_Text>();
-
+      Debug.Log($"@@@: {RoomManager.Instance.problemNum}"); // 참여하기로 들어왔을 떄 최대 문제 수를 공유 받지 못해 생긴 일 
+      
       problemQuantity = RoomManager.Instance.problemNum;
+      
       selectedPart = RoomManager.Instance.clickPart;
       mode = RoomManager.Instance.mode;
       
@@ -264,6 +266,7 @@ public class ProblemManager : MonoBehaviour
    
    private void MProblems(int probleNumber) 
    {
+      Debug.Log($"Index: {problemNumber}");
       // 해당 번호의 문제 
       Problem problem = problemsList[problemNumber];
          

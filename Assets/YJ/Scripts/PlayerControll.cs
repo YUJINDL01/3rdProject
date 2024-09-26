@@ -47,7 +47,7 @@ public class PlayerControll : NetworkBehaviour
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     public void RpcScore(int currentScore)
     {
-        scoreText.text = currentScore.ToString(); 
+        scoreText.text = $"Score {currentScore.ToString()}";
         RankManager.SetPlayerRank(Id, "", currentScore);
         Debug.Log($"currentScore : {currentScore}");
     }

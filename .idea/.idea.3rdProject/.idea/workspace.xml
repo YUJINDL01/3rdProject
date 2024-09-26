@@ -4,23 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="294f6a5c-8b49-45bd-816b-9f85d433d539" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.3rdProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.3rdProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MJ/Scene/Login.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MJ/Scene/Login.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scenes/Written_RoomCreate.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scenes/Written_RoomCreate.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scenes/Written_TEST.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scenes/Written_TEST.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/ModeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/ModeManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/ProblemManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/ProblemManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/ProblemTimer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/ProblemTimer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/RoomJoinedManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/RoomJoinedManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/RoomManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/RoomManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/RunnerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/RunnerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/SharedGameData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/SharedGameData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/YJ/TextMesh Pro/Resources/Fonts &amp; Materials/전기안전체 REGULAR SDF 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/TextMesh Pro/Resources/Fonts &amp; Materials/전기안전체 REGULAR SDF 1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-    </list>
+    <list default="true" id="294f6a5c-8b49-45bd-816b-9f85d433d539" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -135,6 +119,7 @@
       <workItem from="1727286969254" duration="31414000" />
       <workItem from="1727340883521" duration="744000" />
       <workItem from="1727342053709" duration="1380000" />
+      <workItem from="1727343572981" duration="20471000" />
     </task>
     <servers />
   </component>

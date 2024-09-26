@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Fusion;
 using UnityEngine;
 
@@ -5,6 +6,8 @@ public class SharedGameData : NetworkBehaviour
 {
     public static SharedGameData Instance;
 
+    public List<Problem> problemsList = new List<Problem>();
+    
     public static int ReadyCount { get; set; }
     //public static int GameEndCount { get; set; }
 
@@ -18,8 +21,7 @@ public class SharedGameData : NetworkBehaviour
         
         ReadyCount = 0;
         
-        
-        
+        //InitializeProblems();
         // -> 같은 플레이어의 플레이어가 2개 생기는 듯
     }
 
@@ -30,5 +32,18 @@ public class SharedGameData : NetworkBehaviour
         ReadyCount++;
         Debug.Log($"ReadyCount Changed : {ReadyCount}");
     }
+
+    /*
+    private void InitializeProblems()
+    {
+        //problemsList = 
+    }
+
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    public void RpcShareProblems(List<Problem> sharedProblens)
+    {
+        
+    }
+    */
 
 }

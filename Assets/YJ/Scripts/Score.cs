@@ -11,6 +11,8 @@ public class Score : MonoBehaviour
     public int scorePoint = 0;
     private bool[] correctOrIncorrect;
 
+    public List<int> selectedAnswer = new List<int>(); 
+    
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -58,7 +60,7 @@ public class Score : MonoBehaviour
         
         Debug.Log("채점 시작");
         
-        List<int> selectedAnswer = new List<int>(); // 선택된 정답지에서 숫자만 뽑을 코드 
+        // 선택된 정답지에서 숫자만 뽑을 코드 
         for (int problemNum = 0; problemNum < answerSheet.GetLength(0); problemNum++)//문제번호 처음부터 끝까지  
         {
             int correct = 0; //처음은 맞은 수 0 
@@ -99,5 +101,6 @@ public class Score : MonoBehaviour
         PlayerPrefs.Save(); // 저장된 값을 디스크에 쓰기
         
         Debug.Log($"currentscore: {scorePoint}");
+        Debug.Log($"selectedAnswer: {string.Join(", ", selectedAnswer)}");
     }
 }
