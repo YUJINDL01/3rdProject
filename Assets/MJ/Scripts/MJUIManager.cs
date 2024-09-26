@@ -1,5 +1,7 @@
 using System;
+using Fusion;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MJUIManager : MonoBehaviour
 {
@@ -17,6 +19,7 @@ public class MJUIManager : MonoBehaviour
     public GameObject bbreak;
     public GameObject seatBelt;
 
+    public Button eButton;
     private void Awake()
     {
         leftBlinker.SetActive(false);
@@ -71,6 +74,8 @@ public class MJUIManager : MonoBehaviour
     {
         Debug.Log("비상등빔!");
         emerygencyLights.SetActive(true);
+        
+        eButton.onClick.AddListener(HideButton);
     }
 
     public void HighBeam()
@@ -129,5 +134,10 @@ public class MJUIManager : MonoBehaviour
     public void SeatBelt()
     {
         Debug.Log("안전벨트단디매라잉");
+    }
+
+    void HideButton()
+    {
+        gameObject.SetActive(false);
     }
 }
