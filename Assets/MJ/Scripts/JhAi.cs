@@ -7,7 +7,7 @@ using Newtonsoft.Json; // JSON 처리용 라이브러리 (Newtonsoft.Json)
 
 public class JhAi : MonoBehaviour
 {
-    string aiServerUrl = "https://82ba-221-163-19-142.ngrok-free.app/login"; // AI 서버의 URL
+    string aiServerUrl = "https://03ab-221-163-19-142.ngrok-free.app/login"; // AI 서버의 URL
 
     public static JHdata jhData;
     private IEnumerator Start()

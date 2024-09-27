@@ -38,5 +38,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/TwoVersionScene.unity
     guid: 41578ee3b91e4a74fb80c99abdb32425
+  - enabled: 1
+    path: Assets/MJ/Scene/AIMap.unity
+    guid: 6aca674a7fa9a694795b346990bd90d8
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

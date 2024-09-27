@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class MJSceneManager : MonoBehaviour
 {
     public void SStart()
@@ -17,7 +18,12 @@ public class MJSceneManager : MonoBehaviour
         SceneManager.LoadScene("TwoVersionScene");
     }
 
-    public void Exit()
+    public void AIto()
+    {
+        SceneManager.LoadScene("AIMap");
+    }
+
+public void Exit()
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;

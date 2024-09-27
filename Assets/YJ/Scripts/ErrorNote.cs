@@ -16,9 +16,5 @@ public class ErrorNote : MonoBehaviour
     //retryButton.SetActive(true);
     retryButton.SetActive(true);
   }
-
-  public void StartAIQuestion()
-  {
-    SceneManager.LoadScene("Written_TEST 1");
-  }
+  
 }
