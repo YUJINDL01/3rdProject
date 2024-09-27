@@ -259,6 +259,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6104103469466345063, guid: a03e9e3d9211d8a41917ab90fc31a90a, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6104103469466345063, guid: a03e9e3d9211d8a41917ab90fc31a90a, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 6104103469466345063, guid: a03e9e3d9211d8a41917ab90fc31a90a, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 7262401081936992871, guid: a03e9e3d9211d8a41917ab90fc31a90a, type: 3}
       propertyPath: m_Name
       value: Camara
