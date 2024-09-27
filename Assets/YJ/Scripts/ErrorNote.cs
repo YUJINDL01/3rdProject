@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ErrorNote : MonoBehaviour
 {
@@ -14,5 +15,10 @@ public class ErrorNote : MonoBehaviour
     rank.SetActive(false);
     //retryButton.SetActive(true);
     retryButton.SetActive(true);
+  }
+
+  public void StartAIQuestion()
+  {
+    SceneManager.LoadScene("Written_TEST 1");
   }
 }
