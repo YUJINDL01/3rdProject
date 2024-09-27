@@ -69,7 +69,7 @@ public class ProblemManager : MonoBehaviour
    
    public void InitializeProblems(int problemQuantity, int problemNumber)
    {
-      Random.InitState(1000);
+      //Random.InitState(1000);
       //랜덤으로 문제 뽑고 저장 //초기에 1번만 실행 (setting) 
       MRandoms(problemQuantity);
       
