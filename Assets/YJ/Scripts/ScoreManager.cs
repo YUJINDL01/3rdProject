@@ -112,14 +112,15 @@ public class ScoreManager :NetworkBehaviour
 
     private void True()
     {
+        //정답
         oxImage[0].gameObject.SetActive(true);
         oxImage[1].gameObject.SetActive(false);
         answerOX.Add("O");
-
     }
 
     private void False()
     {
+        //틀렸음
         oxImage[0].gameObject.SetActive(false);
         oxImage[1].gameObject.SetActive(true);
         answerOX.Add("X");
@@ -127,6 +128,7 @@ public class ScoreManager :NetworkBehaviour
 
     public void OffOX()
     {
+        
         oxImage[0].gameObject.SetActive(false);
         oxImage[1].gameObject.SetActive(false);
     }
