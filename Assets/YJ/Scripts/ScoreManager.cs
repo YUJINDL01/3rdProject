@@ -94,11 +94,15 @@ public class ScoreManager :NetworkBehaviour
             score = problemList[problemNum].score;
             currentScore += score;
 
-            Debug.Log($"score: {currentScore}");
+            // 정답일떄
+            
+            Debug.Log($"score: {currentScore}"); 
             True();
         }
         else
         {
+            // 틀렸을떄
+            
             Debug.Log("틀렸습니당!");
             False();
         }
