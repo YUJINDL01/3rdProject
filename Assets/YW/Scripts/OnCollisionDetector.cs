@@ -35,8 +35,8 @@ public class OnCollisionDetector : MonoBehaviour
     private string _randomTag;
     public void Off()
     {
-        audioSource.enabled = false;
-        collisionText.enabled = false;
+        audioSource.Stop();
+        collisionText.text = "";
     }
     public string GetRandomTag()
     {
