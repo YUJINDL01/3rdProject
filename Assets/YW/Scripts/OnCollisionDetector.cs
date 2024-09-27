@@ -17,6 +17,7 @@ public class OnCollisionDetector : MonoBehaviour
     public AudioClip bbiSound;
     public AudioClip passSound;
     public AudioClip okSound;
+    public AudioClip dolbal;
     
     
     public TMP_Text collisionText; // 불러올 텍스트 변수 지정
@@ -145,6 +146,7 @@ public class OnCollisionDetector : MonoBehaviour
                 isFail = false;
                 
                 mjUIManager.EmerygencyLights();
+                Dolbal();
                 StartCoroutine(WarningTimer());
             }
         }
@@ -156,6 +158,7 @@ public class OnCollisionDetector : MonoBehaviour
                 Debug.Log("warn2");
                 isFail = false;
                 mjUIManager.EmerygencyLights();
+                Dolbal();
                 StartCoroutine(WarningTimer());
             }
         }
@@ -167,6 +170,7 @@ public class OnCollisionDetector : MonoBehaviour
                 Debug.Log("warn3");
                 isFail = false;
                 mjUIManager.EmerygencyLights();
+                Dolbal();
                 StartCoroutine(WarningTimer());
             }
         }
@@ -178,6 +182,7 @@ public class OnCollisionDetector : MonoBehaviour
                 Debug.Log("warn4");
                 isFail = false;
                 mjUIManager.EmerygencyLights();
+                Dolbal();
                 StartCoroutine(WarningTimer());
             }
         }
@@ -246,7 +251,11 @@ public class OnCollisionDetector : MonoBehaviour
     }
 
 
-
+    private void Dolbal()
+    {
+        audioSource.volume = 03f;
+        audioSource.PlayOneShot(dolbal);
+    }
 
 
 

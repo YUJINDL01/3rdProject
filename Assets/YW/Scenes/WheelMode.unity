@@ -1457,6 +1457,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 311267962}
     - target: {fileID: 307537259243302471, guid: 29ce902426996a3468c85832ad863939, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 307537259243302471, guid: 29ce902426996a3468c85832ad863939, type: 3}
       propertyPath: sideBreak
       value: 
       objectReference: {fileID: 291798715}
@@ -18701,6 +18705,10 @@ PrefabInstance:
       propertyPath: Warn4
       value: 
       objectReference: {fileID: 528299822}
+    - target: {fileID: 2918351269797041761, guid: c08664a9feed25e458888c8778a9b7b2, type: 3}
+      propertyPath: dolbal
+      value: 
+      objectReference: {fileID: 8300000, guid: 6ac16870dad50604789e82ddc42c6f4b, type: 3}
     - target: {fileID: 2918351269797041761, guid: c08664a9feed25e458888c8778a9b7b2, type: 3}
       propertyPath: okSound
       value: 
