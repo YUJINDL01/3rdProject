@@ -60,6 +60,7 @@ public class TestEnd : NetworkBehaviour
         {
             if (Runner.IsSceneAuthority)
             {
+                //요때 
                 Debug.Log("네트워크 씬 바꾸는 중");
                 Runner.LoadScene(SceneRef.FromIndex(SceneUtility.GetBuildIndexByScenePath("Written_Result")));
                 yield return null;

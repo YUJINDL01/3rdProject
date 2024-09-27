@@ -94,11 +94,15 @@ public class ScoreManager :NetworkBehaviour
             score = problemList[problemNum].score;
             currentScore += score;
 
-            Debug.Log($"score: {currentScore}");
+            // 정답일떄
+            
+            Debug.Log($"score: {currentScore}"); 
             True();
         }
         else
         {
+            // 틀렸을떄
+            
             Debug.Log("틀렸습니당!");
             False();
         }
@@ -108,14 +112,15 @@ public class ScoreManager :NetworkBehaviour
 
     private void True()
     {
+        //정답
         oxImage[0].gameObject.SetActive(true);
         oxImage[1].gameObject.SetActive(false);
         answerOX.Add("O");
-
     }
 
     private void False()
     {
+        //틀렸음
         oxImage[0].gameObject.SetActive(false);
         oxImage[1].gameObject.SetActive(true);
         answerOX.Add("X");
@@ -123,6 +128,7 @@ public class ScoreManager :NetworkBehaviour
 
     public void OffOX()
     {
+        
         oxImage[0].gameObject.SetActive(false);
         oxImage[1].gameObject.SetActive(false);
     }
