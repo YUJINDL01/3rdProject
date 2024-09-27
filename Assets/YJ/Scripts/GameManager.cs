@@ -35,6 +35,9 @@ public class GameManager : MonoBehaviour
 
    public GameObject waitingImage;
 
+   public AudioSource AudioSource;
+   public AudioClip startSound;
+   
    private int num = 0; 
    
    private void Awake()
@@ -186,6 +189,7 @@ public class GameManager : MonoBehaviour
       waitingImage.SetActive(false);
       readyButton.gameObject.SetActive(true);
       startButton.gameObject.SetActive(false);
+      Play();
       
       int previousCount = -1; 
       
@@ -323,7 +327,14 @@ public class GameManager : MonoBehaviour
       //RunnerController.Runner.SpawnAsync(gameCanvas);
       //quizCanvas.SetActive(true);
    }
-   
+
+   private void Play()
+   {
+      AudioSource.volume = 0.5f;
+      AudioSource.PlayOneShot(startSound);
+      
+   }
+
 }
 
 

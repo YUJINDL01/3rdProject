@@ -8,6 +8,10 @@ using UnityEngine.UI;
 
 public class ScoreManager :NetworkBehaviour
 {
+    public AudioSource audiSource;
+    public AudioClip succ;
+    public AudioClip fail;
+    
     public static ScoreManager Instance;
     private List<Problem> problemList;
     //public List<Button> answerButton;
@@ -30,9 +34,14 @@ public class ScoreManager :NetworkBehaviour
         Init();
         DontDestroyOnLoad(this);
     }
-    
 
-   private void Init()
+    private void Start()
+    {
+        audiSource = GetComponent<AudioSource>();
+    }
+
+
+    private void Init()
    {
        GameObject o = GameObject.Find("Quiz/OX/O");
        GameObject x = GameObject.Find("Quiz/OX/X");
@@ -112,14 +121,17 @@ public class ScoreManager :NetworkBehaviour
 
     private void True()
     {
+        //정답
+        Succ();
         oxImage[0].gameObject.SetActive(true);
         oxImage[1].gameObject.SetActive(false);
         answerOX.Add("O");
-
     }
 
     private void False()
     {
+        //틀렸음
+        Fail();
         oxImage[0].gameObject.SetActive(false);
         oxImage[1].gameObject.SetActive(true);
         answerOX.Add("X");
@@ -127,6 +139,7 @@ public class ScoreManager :NetworkBehaviour
 
     public void OffOX()
     {
+        
         oxImage[0].gameObject.SetActive(false);
         oxImage[1].gameObject.SetActive(false);
     }
@@ -151,4 +164,17 @@ public class ScoreManager :NetworkBehaviour
         }
     }
     */
+
+    private void Succ()
+    {
+        audiSource.volume = 0.5f; 
+        audiSource.PlayOneShot(succ);
+    }
+
+    private void Fail()
+    {
+        audiSource.volume = 0.5f;
+        audiSource.PlayOneShot(fail);
+
+    }
 }
