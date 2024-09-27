@@ -75,7 +75,7 @@ public class MJUIManager : MonoBehaviour
         Debug.Log("비상등빔!");
         emerygencyLights.SetActive(true);
         
-        eButton.onClick.AddListener(HideButton);
+       // eButton.onClick.AddListener(HideButton);
     }
 
     public void HighBeam()
