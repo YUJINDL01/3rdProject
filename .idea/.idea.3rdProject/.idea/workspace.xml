@@ -4,7 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="294f6a5c-8b49-45bd-816b-9f85d433d539" name="Changes" comment="" />
+    <list default="true" id="294f6a5c-8b49-45bd-816b-9f85d433d539" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.3rdProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.3rdProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/JBY/Prefab/page/prefab/KOPUBWORLD_TTF_FONTS-1/KoPubWorld Batang Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/JBY/Prefab/page/prefab/KOPUBWORLD_TTF_FONTS-1/KoPubWorld Batang Bold SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/JBY/Prefab/page/prefab/KOPUBWORLD_TTF_FONTS-1/KoPubWorld Batang Light SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/JBY/Prefab/page/prefab/KOPUBWORLD_TTF_FONTS-1/KoPubWorld Batang Light SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/JBY/Prefab/page/prefab/KOPUBWORLD_TTF_FONTS-1/KoPubWorld Batang Medium SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/JBY/Prefab/page/prefab/KOPUBWORLD_TTF_FONTS-1/KoPubWorld Batang Medium SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/JBY/Prefab/page/prefab/KOPUBWORLD_TTF_FONTS-1/KoPubWorld Dotum Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/JBY/Prefab/page/prefab/KOPUBWORLD_TTF_FONTS-1/KoPubWorld Dotum Bold SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/JBY/Prefab/page/prefab/KOPUBWORLD_TTF_FONTS-1/KoPubWorld Dotum Light SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/JBY/Prefab/page/prefab/KOPUBWORLD_TTF_FONTS-1/KoPubWorld Dotum Light SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/JBY/Prefab/page/prefab/KOPUBWORLD_TTF_FONTS-1/KoPubWorld Dotum Medium SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/JBY/Prefab/page/prefab/KOPUBWORLD_TTF_FONTS-1/KoPubWorld Dotum Medium SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MJ/Photon/FusionDemos/Photon-Fusion-Intro-Sample-2.0.3-Stable-858.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MJ/Photon/FusionMenu/Photon-Fusion-Menu-2.0.3-Stable-858.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scenes/Written_Result.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scenes/Written_Result.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scenes/Written_RoomCreate.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scenes/Written_RoomCreate.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/ErrorNote.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/ErrorNote.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YJ/TextMesh Pro/Resources/Fonts &amp; Materials/전기안전체 REGULAR SDF 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/TextMesh Pro/Resources/Fonts &amp; Materials/전기안전체 REGULAR SDF 1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YJ/TextMesh Pro/Resources/Fonts &amp; Materials/전기안전체 REGULAR SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/TextMesh Pro/Resources/Fonts &amp; Materials/전기안전체 REGULAR SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,13 +32,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/eaeed7563bb54141986573d11508bb3eb0800/82/7a987072/NetworkBehaviourId.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/eaeed7563bb54141986573d11508bb3eb0800/c7/91c6ef24/IPlayerJoined.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/eaeed7563bb54141986573d11508bb3eb0800/d0/9f1e57b4/INetworkRunnerCallbacks.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/eaeed7563bb54141986573d11508bb3eb0800/ec/60b311b3/NetworkBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f22cb97e7aa5412ba04225fa1fc145f246ae00/8f/1dfcb945/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/YJ/Scripts/NetworkProblemManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MJ/Scripts/ProblemManager1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/YJ/Scripts/ResultManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/29ea32a76b2a6b8eb246f247df6a6a86d887384b4c31db2a35effccdd86c24/JsonSerializerInternalReader.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -35,7 +49,7 @@
   &quot;keyToString&quot;: {
     &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;PYJ&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;PMJ&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -87,10 +101,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="23704">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="23704" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -120,6 +134,10 @@
       <workItem from="1727340883521" duration="744000" />
       <workItem from="1727342053709" duration="1380000" />
       <workItem from="1727343572981" duration="20471000" />
+      <workItem from="1727398591890" duration="303000" />
+      <workItem from="1727398906555" duration="270000" />
+      <workItem from="1727399183235" duration="280000" />
+      <workItem from="1727399475384" duration="5421000" />
     </task>
     <servers />
   </component>
