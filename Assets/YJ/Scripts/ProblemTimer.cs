@@ -6,6 +6,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 public class ProblemTimer : MonoBehaviour
 {
+
+    public AudioSource audioSource;
+    public AudioClip play;
+    
     public TMP_Text timer;
 
     private int timerSec;
@@ -26,6 +30,7 @@ public class ProblemTimer : MonoBehaviour
     
     public IEnumerator Timers()
     {
+        //problemStart();
         Debug.Log("타이머 시작");
         timerSec = 10; 
         int currentTime = timerSec;
@@ -82,5 +87,11 @@ public class ProblemTimer : MonoBehaviour
 
 
         StartCoroutine(Timers());
+    }
+
+    private void problemStart()
+    {
+        audioSource.volume = 0.5f;
+        audioSource.PlayOneShot(play);
     }
 }

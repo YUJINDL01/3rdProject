@@ -6,12 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="294f6a5c-8b49-45bd-816b-9f85d433d539" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.3rdProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.3rdProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MJ/Photon/FusionDemos/Photon-Fusion-Intro-Sample-2.0.3-Stable-858.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MJ/Photon/FusionMenu/Photon-Fusion-Menu-2.0.3-Stable-858.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MJ/Scene/Login.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MJ/Scene/Login.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MJ/Scene/Start.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MJ/Scene/Start.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MJ/Scripts/Sound.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MJ/Scripts/Sound.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YJ/Prefabs/Quiz.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Prefabs/Quiz.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/YJ/Scenes/Written_TEST.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scenes/Written_TEST.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/ScoreManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/ScoreManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/YJ/TextMesh Pro/Resources/Fonts &amp; Materials/전기안전체 REGULAR SDF 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/TextMesh Pro/Resources/Fonts &amp; Materials/전기안전체 REGULAR SDF 1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/YJ/TextMesh Pro/Resources/Fonts &amp; Materials/전기안전체 REGULAR SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/TextMesh Pro/Resources/Fonts &amp; Materials/전기안전체 REGULAR SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/YJ/Scripts/ProblemTimer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/YJ/Scripts/ProblemTimer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +125,7 @@
       <workItem from="1727340883521" duration="744000" />
       <workItem from="1727342053709" duration="1380000" />
       <workItem from="1727343572981" duration="20471000" />
-      <workItem from="1727394290225" duration="3721000" />
+      <workItem from="1727394290225" duration="6098000" />
     </task>
     <servers />
   </component>
