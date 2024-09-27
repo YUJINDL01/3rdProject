@@ -255,7 +255,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 67.6866
+  field of view: 50
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -281,8 +281,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 38949547}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1930306, y: 0, z: 0, w: 0.98119277}
-  m_LocalPosition: {x: 0, y: 3.23, z: -4.3}
+  m_LocalRotation: {x: -0.07523328, y: -0.0041990858, z: 0.005895827, w: -0.99713975}
+  m_LocalPosition: {x: 25.558105, y: 1.38607, z: -25.061478}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1057,6 +1057,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6104103469466345063, guid: a03e9e3d9211d8a41917ab90fc31a90a, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6104103469466345063, guid: a03e9e3d9211d8a41917ab90fc31a90a, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 6104103469466345063, guid: a03e9e3d9211d8a41917ab90fc31a90a, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 7262401081936992871, guid: a03e9e3d9211d8a41917ab90fc31a90a, type: 3}
       propertyPath: m_Name
       value: Camara
@@ -1231,10 +1243,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1450,7 +1462,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be6fee18f3518a747ad7eae7aeb06645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
+  bbiSound: {fileID: 0}
+  passSound: {fileID: 0}
+  okSound: {fileID: 0}
   collisionText: {fileID: 496033085}
+  isFail: 0
+  carControllerTest: {fileID: 0}
+  Warn1: {fileID: 0}
+  Warn2: {fileID: 0}
+  Warn3: {fileID: 0}
+  Warn4: {fileID: 0}
+  mjUIManager: {fileID: 0}
 --- !u!4 &2084708505 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7639664224973046595, guid: 7aa41486804581c42830c8cd2d4fbe8e, type: 3}
